@@ -1,4 +1,5 @@
 import 'package:fleet_sync/models/comapany_models.dart';
+import 'package:fleet_sync/models/fuel_card_models.dart';
 import 'package:fleet_sync/models/truck_models.dart';
 
 abstract class FeedItem {
@@ -31,5 +32,7 @@ abstract class FeedItem {
 Future<List<FeedItem>> getFeedItems() async {
   final trucks = await TruckModels().getTruckData();
   final companies = await CompanyModels().getCompanyData();
-  return [...trucks, ...companies]; // Unified list
+  final fuelCards = await FuelCardModels().getFuelCardData();
+  return [...trucks, ...companies, ...fuelCards];
 }
+

@@ -1,4 +1,5 @@
-import 'package:fleet_sync/navbar/navbar.dart';
+import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/routes/app_routes_file.dart';
 import 'package:fleet_sync/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,10 +20,9 @@ class MainApp extends StatelessWidget {
       theme: themeDataLight,
       darkTheme: themeDataDark,
       themeMode: ThemeMode.dark,
-      home: Navbar(),
-      // initialRoute: AppRoutes.login, //AppRoutes.navbar,
-      // getPages: appRouteFile,
-      debugShowCheckedModeBanner: false,
-    );
+      // home: Navbar(),
+      initialRoute: AppRoutes.navbar, //AppRoutes.navbar,
+      getPages: appRouteFile,
+      debugShowCheckedModeBanner: false,    );
   }
 }

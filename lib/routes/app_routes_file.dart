@@ -1,4 +1,5 @@
 import 'package:fleet_sync/about_us_screen/about_us_page.dart';
+import 'package:fleet_sync/card_details_screen/card_details_page.dart';
 import 'package:fleet_sync/company_details_screen/company_details_page.dart';
 import 'package:fleet_sync/custom_widgets/logo.dart';
 import 'package:fleet_sync/edit_profile_screen/edit_profile_page.dart';
@@ -104,4 +105,5 @@ List<GetPage> appRouteFile = <GetPage>[
   // GetPage(name: AppRoutes.mapPage, page: () => MapPage()),
   GetPage(name: AppRoutes.truckSalesPage, page: () => TruckSalesPage()),
   GetPage(name: AppRoutes.truckDetailsPage, page: () => TruckDetailsPage()),
+  GetPage(name: AppRoutes.cardkDetailsPage, page: () => CardDetailsPage()),
 ];

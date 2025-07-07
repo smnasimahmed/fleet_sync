@@ -30,6 +30,7 @@ class MapPage extends StatelessWidget {
                 child: Row(
                   children: [
                     customElevatedButton(
+                      top: 0,
                       title: ConstStrings.destination,
                       onPressed: () {},
                       height: 32,

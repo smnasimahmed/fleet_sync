@@ -4,6 +4,7 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/custom_widgets/logo.dart';
 import 'package:fleet_sync/drawer_screen/drawer_page.dart';
+import 'package:fleet_sync/fuel_card_screen/fuel_card_page.dart';
 import 'package:fleet_sync/home_screen/home_page.dart';
 import 'package:fleet_sync/list_screen/list_page.dart';
 import 'package:fleet_sync/map_screen/map_page.dart';
@@ -41,7 +42,7 @@ class Navbar extends StatelessWidget {
       ChatsPage(),
       ListPage(),
       TruckSalesPage(),
-      Center(child: Text('Cholche gari sisim poore')),
+      FuelCardPage(),
     ];
 
     RxInt selectedIndex = 5.obs;

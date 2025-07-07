@@ -190,7 +190,7 @@ static const bulletinDiscountsAndOffers = ' • Discounts & Offers: ';
 static const bulletinCreditLine = ' • Credit Line: ';
 static const bulletinCardCompanyName = ' • Card Company Name: ';
 static const bulletinLocation = ' • Location: ';
-// static const sendRequest = 'Send Request';
+static const getNow = 'Get Now';
 
 
   static const aboutUsDescription =
