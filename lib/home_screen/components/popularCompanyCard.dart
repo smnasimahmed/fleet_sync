@@ -12,6 +12,7 @@ class PopularCompanyCard extends StatelessWidget {
   final String? brand;
   final String? model;
   final CardMode cardMode;
+
   final void Function() onPressed;
   final void Function() bookMarkonTap;
   final void Function()? shareOntap;
@@ -24,7 +25,9 @@ class PopularCompanyCard extends StatelessWidget {
     this.brand,
     this.model,
     required this.cardMode,
-    required this.onPressed, required this.bookMarkonTap, this.shareOntap,
+    required this.onPressed,
+    required this.bookMarkonTap,
+    this.shareOntap,
   });
 
   @override
@@ -75,7 +78,10 @@ class PopularCompanyCard extends StatelessWidget {
           width: 16,
           right: 4,
           top: 3,
-          child: InkWell(onTap: bookMarkonTap,child: SvgPicture.asset('assets/icons/bookMark.svg'),),
+          child: InkWell(
+            onTap: bookMarkonTap,
+            child: SvgPicture.asset('assets/icons/bookMark.svg'),
+          ),
         ),
         (cardMode == CardMode.truck)
             ? Positioned(
@@ -83,7 +89,10 @@ class PopularCompanyCard extends StatelessWidget {
               width: 16,
               right: 4,
               top: 24,
-              child: InkWell(onTap: shareOntap,child: SvgPicture.asset('assets/icons/share.svg'),),
+              child: InkWell(
+                onTap: shareOntap,
+                child: SvgPicture.asset('assets/icons/share.svg'),
+              ),
             )
             : SizedBox(),
       ],
@@ -146,7 +155,9 @@ class AfterLocation extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.36, vertical: 3.5),
         child:
-            (cardMode == CardMode.company || cardMode == CardMode.fuel) ? _companyRatings() : _truckBrand(),
+            (cardMode == CardMode.company || cardMode == CardMode.fuel)
+                ? _companyRatings()
+                : _truckBrand(),
       ),
     );
   }

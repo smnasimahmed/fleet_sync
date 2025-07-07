@@ -27,6 +27,7 @@ import 'package:fleet_sync/subscription_screen/subscription_page.dart';
 import 'package:fleet_sync/terms_condition_screen/terms_condition_page.dart';
 import 'package:fleet_sync/truck_details_screen/truck_details_page.dart';
 import 'package:fleet_sync/truck_sales_screen/truck_sales_page.dart';
+import 'package:fleet_sync/truck_sell_post_form_screen/truck_sell_post_form_page.dart';
 import 'package:fleet_sync/turck_information_screen/truck_information_page.dart';
 import 'package:fleet_sync/update_password_screen/update_password_page.dart';
 import 'package:fleet_sync/welcome_screen/welcome_page.dart';
@@ -104,6 +105,14 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.companyDetailsPage, page: () => CompanyDetailsPage()),
   // GetPage(name: AppRoutes.mapPage, page: () => MapPage()),
   GetPage(name: AppRoutes.truckSalesPage, page: () => TruckSalesPage()),
-  GetPage(name: AppRoutes.truckDetailsPage, page: () => TruckDetailsPage()),
+  GetPage(
+    name: AppRoutes.truckDetailsPage,
+    page: () => TruckDetailsPage(),
+    binding: NavigationScreenBinding(),
+  ),
   GetPage(name: AppRoutes.cardkDetailsPage, page: () => CardDetailsPage()),
+  GetPage(
+    name: AppRoutes.truckSellPostFormPage,
+    page: () => TruckSellPostFormPage(),
+  ),
 ];

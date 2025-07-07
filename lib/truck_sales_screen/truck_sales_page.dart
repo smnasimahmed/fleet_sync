@@ -1,10 +1,12 @@
+import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/const/const_strings.dart';
+import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_gridview.dart';
 import 'package:fleet_sync/custom_widgets/custom_search_bar.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
-import 'package:fleet_sync/models/comapany_models.dart';
 import 'package:fleet_sync/models/company_truck_abstract.dart';
+import 'package:fleet_sync/models/truck_models.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,126 +15,155 @@ import 'package:get/get.dart';
 class TruckSalesPage extends StatelessWidget {
   TruckSalesPage({super.key});
 
-  final Future<List<FeedItem>> fetchFeedItems =
-      FeedCompanyModels().getFeedCompanyData();
-  final RxBool isSelected = true.obs;
-  final RxInt tab = 0.obs;
-
+  final Future<List<FeedItem>> fetchFeedItemsTruk =
+      FeedTruckModels().getFeedTruckData();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            _tabName(),
-            _searchBar(),
-            _popularCompanyTitle(),
-            _listGridView(),
-          ],
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: TabBar(
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicatorColor: ConstColours.colorGreen,
+            labelColor: ConstColours.colorGreen,
+            tabs: [
+              Tab(
+                child: Customtext(
+                  title: ConstStrings.truckSales,
+                  textSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Tab(
+                child: Customtext(
+                  title: ConstStrings.sellPost,
+                  textSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          body: TabBarView(children: [_page1(), _page2()]), //_page1(),
         ),
       ),
     );
   }
 
-  SliverPadding _listGridView() {
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      sliver: SliverToBoxAdapter(
-        child: CustomGridView<List<FeedItem>>(
-          fetchFeedItems: fetchFeedItems,
-          cardMode: CardMode.company,
-          onPressed: () => Get.toNamed(AppRoutes.companyDetailsPage),
-        ),
+  Widget _page2() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Customtext(
+              title: ConstStrings.createAPost,
+              top: 9,
+              bottom: 21,
+              textSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SvgPicture.asset('assets/icons/uploadPostImage.svg'),
+          ),
+          SliverToBoxAdapter(
+            child: customElevatedButton(
+              top: 21,
+              title: ConstStrings.createNow,
+              onPressed: () => Get.toNamed(AppRoutes.truckSellPostFormPage),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Customtext(
+              title: ConstStrings.postList,
+              top: 33,
+              bottom: 9,
+              textSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          _ownPostlistGridView(),
+        ],
       ),
     );
   }
 
-  Widget _popularCompanyTitle() {
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      sliver: SliverToBoxAdapter(
-        child: Customtext(
-          left: 3,
-          title: ConstStrings.popularCompanies,
-          textSize: 18,
-          fontWeight: FontWeight.w600,
-          top: 11,
-          bottom: 8,
-        ),
+  Widget _page1() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: CustomScrollView(
+        slivers: [_searchBar(), _truckSalesTitle(), _listGridView()],
       ),
     );
   }
 
-  Widget _tabName() {
+  Widget _ownPostlistGridView() {
     return SliverToBoxAdapter(
-      child: Obx(
-        () => Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-              child: Customtext(
-                title: ConstStrings.truckSales,
-                textSize: 18,
-                fontWeight: FontWeight.w600,
-                textColor:
-                    isSelected.value
-                        ? TextColor.colorGreen
-                        : TextColor.colorOffWhite,
-              ),
-              onTap: () {
-                if (tab.value == 1) {
-                  isSelected.value = true;
-                  tab.value = 0;
-                }
+      child: CustomGridView<List<FeedItem>>(
+        fetchFeedItems: fetchFeedItemsTruk,
+        cardMode: CardMode.truck,
+        ownPost: true,
+        onPressed:
+            () => Get.toNamed(
+              AppRoutes.truckDetailsPage,
+              arguments: {
+                'deletePostOnPressed': () {},
+                'editPostOnPressed': Get.toNamed(AppRoutes.truckSellPostFormPage),
+                'sendRequestOnPressed': () {},
+                'ownPost': true,
               },
             ),
+      ),
+    );
+  }
 
-            GestureDetector(
-              child: Customtext(
-                title: ConstStrings.sellPost,
-                textSize: 18,
-                fontWeight: FontWeight.w600,
-                textColor:
-                    isSelected.value
-                        ? TextColor.colorOffWhite
-                        : TextColor.colorGreen,
-              ),
-              onTap: () {
-                if (tab.value == 0) {
-                  isSelected.value = false;
-                  tab.value = 1;
-                }
+  Widget _listGridView() {
+    return SliverToBoxAdapter(
+      child: CustomGridView<List<FeedItem>>(
+        fetchFeedItems: fetchFeedItemsTruk,
+        cardMode: CardMode.company,
+        onPressed:
+            () => Get.toNamed(
+              AppRoutes.truckDetailsPage,
+              arguments: {
+                'deletePostOnPressed': () {},
+                'editPostOnPressed': () {},
+                'sendRequestOnPressed': () {},
+                'ownPost': false,
               },
             ),
-          ],
-        ),
+      ),
+    );
+  }
+
+  Widget _truckSalesTitle() {
+    return SliverToBoxAdapter(
+      child: Customtext(
+        left: 3,
+        title: ConstStrings.truckSales,
+        textSize: 18,
+        fontWeight: FontWeight.w600,
+        top: 16,
       ),
     );
   }
 }
 
-SliverPadding _searchBar() {
+Widget _searchBar() {
   return SliverPadding(
-    padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
+    padding: EdgeInsetsDirectional.only(top: 17),
     sliver: SliverAppBar(
       elevation: 0,
       actions: [SizedBox()],
       collapsedHeight: 63,
-      flexibleSpace: Align(
-        alignment: Alignment.bottomLeft,
-        heightFactor: 3.8,
-        child: Row(
-          children: [
-            CustomSearchBar(
-              hintText: ConstStrings.searchHere,
-              prefixIcon: SizedBox(child: searchIcon()),
-            ),
-            InkWell(
-              child: SvgPicture.asset('assets/icons/tuiningButton.svg'),
-              onTap: () => print('Something Press'),
-            ),
-          ],
-        ),
+      flexibleSpace: Row(
+        children: [
+          CustomSearchBar(
+            hintText: ConstStrings.searchHere,
+            prefixIcon: SizedBox(child: searchIcon()),
+          ),
+        ],
       ),
       expandedHeight: 35,
       pinned: false,

@@ -3,24 +3,54 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/customAppBar.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
+import 'package:fleet_sync/truck_details_screen/truc_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class TruckDetailsPage extends StatelessWidget {
-  const TruckDetailsPage({super.key});
+
+  const TruckDetailsPage({super.key,});
 
   @override
   Widget build(BuildContext context) {
+    // final Function deletePostOnPressed = Get.arguments['deletePostOnPressed'];
+    // final  Function editPostOnPressed = Get.arguments['editPostOnPressed'];
+    // final Function sendRequestOnPressed = Get.arguments['sendRequestOnPressed'];
+    
+      final TruckDetailsController controller = Get.find<TruckDetailsController>();
+      final bool? ownPost = Get.arguments['ownPost'];
+
     double screenWidth = MediaQuery.of(context).size.width;
     double boxWidth = screenWidth * 0.28; // 25% of screen width
 
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(bottom: 43, right: 20, left: 20),
-        child: customElevatedButton(
-          title: ConstStrings.sendRequest,
-          onPressed: null,
-        ),
+        child:
+            (ownPost == false)
+                ? customElevatedButton(
+                  title: ConstStrings.sendRequest,
+                  onPressed: ()=>controller.sendRequest(),
+                )
+                : Row(
+                  children: [
+                    Expanded(
+                      child: customElevatedButton(
+                        title: ConstStrings.deletePost,
+                        color: ConstColours.red,
+                        onPressed: () => controller.deletePost(),
+                      ),
+                    ),
+                    SizedBox(width: 20,),
+                    Expanded(
+                      child: customElevatedButton(
+                        title: ConstStrings.editPost,
+                        onPressed: () => controller.editPost(),
+                      ),
+                    ),
+                  ],
+                ),
       ),
       appBar: CustomAppBar(title: ConstStrings.truckDetails),
       body: SingleChildScrollView(

@@ -15,47 +15,73 @@ class ChatsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            sliver: SliverAppBar(
-              surfaceTintColor: Colors.transparent,
-
-              flexibleSpace: _tabName(),
-              toolbarHeight: 30,
-              pinned: true,
-            ),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            sliver: SliverAppBar(
-              surfaceTintColor: Colors.transparent,
-              floating: true,
-              toolbarHeight: 80,
-              flexibleSpace: CustomTextFormField(
-                title: '',
-                hintText: ConstStrings.searchHere,
-                fieldType: FieldType.search,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: TabBar(
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorColor: ConstColours.colorGreen,
+          labelColor: ConstColours.colorGreen,
+          onTap: (value) => tab.value = value,
+          tabs: [
+            Tab(
+              child: Customtext(
+                title: ConstStrings.inbox,
+                textSize: 18,
+                fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          Obx(
-            () =>
-                (tab.value == 0)
-                    ? tabItem(isRequestTab: false)
-                    : tabItem(isRequestTab: true), // tabItem()
-          ),
-        ],
+            Tab(
+              child: Customtext(
+                title: ConstStrings.requests,
+                textSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+        body: CustomScrollView(
+          slivers: [
+            // SliverPadding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20),
+            //   sliver: SliverAppBar(
+            //     surfaceTintColor: Colors.transparent,
+
+            //     flexibleSpace: _tabName(),
+            //     toolbarHeight: 30,
+            //     pinned: true,
+            //   ),
+            // ),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              sliver: SliverAppBar(
+                surfaceTintColor: Colors.transparent,
+                floating: true,
+                toolbarHeight: 80,
+                flexibleSpace: CustomTextFormField(
+                  title: '',
+                  hintText: ConstStrings.searchHere,
+                  fieldType: FieldType.search,
+                ),
+              ),
+            ),
+            Obx(
+              () =>
+                  (tab.value == 0)
+                      ? tabItem(isRequestTab: false)
+                      : tabItem(isRequestTab: true), // tabItem()
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget tabItem({bool isRequestTab = false}) {
     return FutureBuilder(
-      // TODO: Need to add Abstraction Data types to pass 2 diffrent types
-      future: fetchInboxMessages(),
+      //
+      future:
+          fetchInboxMessages(), //TODO: Need to add Abstraction Data types to pass 2 diffrent types
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return SliverFillRemaining(

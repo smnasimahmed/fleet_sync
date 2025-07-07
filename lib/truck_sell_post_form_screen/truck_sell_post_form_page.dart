@@ -34,7 +34,6 @@ class TruckSellPostFormPage extends StatelessWidget {
                   leftForm: ConstStrings.axels,
                   rightForm: ConstStrings.price,
                 ),
-
                 CustomTextFormField(title: ConstStrings.condition),
                 CustomTextFormField(title: ConstStrings.location),
                 CustomTextFormField(title: ConstStrings.onBehalfOf),

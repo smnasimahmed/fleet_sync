@@ -191,6 +191,9 @@ static const bulletinCreditLine = ' • Credit Line: ';
 static const bulletinCardCompanyName = ' • Card Company Name: ';
 static const bulletinLocation = ' • Location: ';
 static const getNow = 'Get Now';
+static const createNow = 'Create Now';
+static const editPost = 'Edit Post';
+static const postList = 'Post List';
 
 
   static const aboutUsDescription =

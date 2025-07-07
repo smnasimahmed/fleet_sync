@@ -1,13 +1,13 @@
 import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
 import 'package:flutter/material.dart';
-// TODO: Import or define ConstColours, CardMode, and PopularCompanyCard if not already done.
 
 class CustomGridView<T> extends StatelessWidget {
   final Future<T> fetchFeedItems;
   // final Widget Function(List<dynamic>) gridViewBuilder;
   final CardMode cardMode;
   final void Function() onPressed;
+  final bool ownPost;
 
   const CustomGridView({
     super.key,
@@ -15,6 +15,7 @@ class CustomGridView<T> extends StatelessWidget {
     // required this.gridViewBuilder,
     required this.cardMode,
     required this.onPressed,
+    this.ownPost = false,
   });
 
   @override

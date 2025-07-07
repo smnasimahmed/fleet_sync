@@ -87,11 +87,14 @@ class MapPage extends StatelessWidget {
             children: [
               CustomSearchBar(
                 hintText: ConstStrings.searchHere,
-                suffixIcon: SvgPicture.asset(
-                  'assets/icons/search.svg',
-                  colorFilter: ColorFilter.mode(
-                    ConstColours.colorGreen,
-                    BlendMode.srcIn,
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: SvgPicture.asset(
+                    'assets/icons/search.svg',
+                    colorFilter: ColorFilter.mode(
+                      ConstColours.colorGreen,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ),
