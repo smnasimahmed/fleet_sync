@@ -14,6 +14,7 @@ class RoleSelectionPage extends StatelessWidget {
 
   final RoleSelectionController roleSelectionController =
       Get.find<RoleSelectionController>();
+
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;

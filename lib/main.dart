@@ -1,4 +1,3 @@
-import 'package:fleet_sync/inbox_screen/component/chat_page.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:fleet_sync/routes/app_routes_file.dart';
 import 'package:fleet_sync/theme.dart';
@@ -17,12 +16,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logInSession = GetStorage();
     return GetMaterialApp(
       theme: themeDataLight,
       darkTheme: themeDataDark,
       themeMode: ThemeMode.dark,
       // home: ChatPage(),
-      initialRoute: AppRoutes.navbar, //AppRoutes.navbar,
+      initialRoute:
+          (logInSession.read('logInSession') == true)
+              ? AppRoutes.navbar
+              : AppRoutes.login, //AppRoutes.navbar,
       getPages: appRouteFile,
       debugShowCheckedModeBanner: false,
     );

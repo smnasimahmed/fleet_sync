@@ -4,8 +4,10 @@ import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 Future<void> logOutPopUp(BuildContext context) {
+
   return showDialog(
     context: context,
     barrierDismissible: true,
@@ -47,10 +49,13 @@ Future<void> logOutPopUp(BuildContext context) {
 }
 
 Widget _yesButton(BuildContext context) {
+      final logInSession = GetStorage();
   return SizedBox(
     height: 30,
     child: ElevatedButton(
       onPressed: () {
+            logInSession.write('role', 0);
+        logInSession.write('logInSession', false);
         Get.toNamed(AppRoutes.login);
       },
       style: ElevatedButton.styleFrom(

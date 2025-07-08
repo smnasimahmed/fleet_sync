@@ -12,6 +12,7 @@ class WelcomePage extends StatelessWidget {
   WelcomePage({super.key});
   final controller = Get.find<RoleSelectionController>();
   final role = GetStorage();
+  final logInSession = GetStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,10 @@ class WelcomePage extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 43, right: 20, left: 20),
         child: customElevatedButton(
           title: ConstStrings.letsGetStarted,
-          onPressed: () => Get.toNamed(AppRoutes.navbar),
+          onPressed: () {
+            logInSession.write('logInSession', true);
+            Get.toNamed(AppRoutes.navbar);
+          },
         ),
       ),
       body: Center(

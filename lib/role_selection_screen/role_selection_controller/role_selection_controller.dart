@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+// import 'package:get_storage/get_storage.dart';
 
 class RoleSelectionController extends GetxController {
   var selectedIndex = 0.obs;
@@ -13,4 +14,17 @@ class RoleSelectionController extends GetxController {
   ];
 
   String get selectedRole => roles[selectedIndex.value];
+//    final role = GetStorage();
+
+//  void updateRoleIndex(int index){   
+//    role.write('role', selectedRole);
+//  }
+
+//   @override
+//   void onInit() {
+//     super.onInit();
+
+//    updateRoleIndex(selectedIndex.value);
+//     // role.write('role', 0);
+//   }
 }
