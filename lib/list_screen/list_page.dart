@@ -62,6 +62,7 @@ SliverPadding _searchBar() {
     sliver: SliverAppBar(
       elevation: 0,
       actions: [SizedBox()],
+      leading: SizedBox(),
       collapsedHeight: 63,
       flexibleSpace: Align(
         alignment: Alignment.bottomLeft,
