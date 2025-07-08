@@ -1,3 +1,4 @@
+import 'package:fleet_sync/inbox_screen/component/chat_page.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:fleet_sync/routes/app_routes_file.dart';
 import 'package:fleet_sync/theme.dart';

@@ -76,6 +76,7 @@ class MapPage extends StatelessWidget {
     return SliverPadding(
       padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
       sliver: SliverAppBar(
+        leading: SizedBox(),
         // backgroundColor: ConstColours.appDarktBackGround,
         elevation: 0,
         collapsedHeight: 63,

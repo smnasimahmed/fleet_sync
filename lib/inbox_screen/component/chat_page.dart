@@ -7,18 +7,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   ChatPage({super.key});
+
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   final Future<List<ChatMessage>> future = fetchChatMessages();
+
   final myId = 'user123';
+
   final List<String> menuItam = ['Block', 'Delete', 'Report'];
+  final TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: _chatInputField(),
-        appBar: AppBar(
+        bottomSheet: SafeArea(child: _chatInputField()),
+         appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
           leading: InkWell(
             radius: 10,
             onTap: Get.back,
@@ -30,7 +40,7 @@ class ChatPage extends StatelessWidget {
           actions: [
             _popMenuIcon(),
           ],
-
+      
           title: Row(
             children: [
               CircleAvatar(
@@ -53,7 +63,7 @@ class ChatPage extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 80),
           child: FutureBuilder(
             future: future,
             builder: (context, snapshot) {
@@ -125,14 +135,15 @@ class ChatPage extends StatelessWidget {
   Widget _chatInputField() {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 20.0,
+        left: 20,
         right: 20,
-        bottom: 43,
+        bottom: 10,
         top: 10,
       ),
       child: SizedBox(
         height: 56,
         child: TextFormField(
+          controller: textController,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50.0),
@@ -147,7 +158,9 @@ class ChatPage extends StatelessWidget {
               right: 11,
               bottom: 12,
               title: ConstStrings.send,
-              onPressed: () {},
+              onPressed: () {
+                print(textController.text.runtimeType);
+              },
               height: 32,
               width: 78,
             ),
@@ -177,7 +190,6 @@ class ChatPage extends StatelessWidget {
                     : ConstColours.colorGreen,
             borderRadius: BorderRadius.circular(12),
           ),
-          // height: 100,
           width: 257,
           child: Text(data[index].message),
         ),

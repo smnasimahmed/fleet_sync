@@ -195,6 +195,7 @@ static const createNow = 'Create Now';
 static const editPost = 'Edit Post';
 static const postList = 'Post List';
 static const send = 'Send';
+static const areYouSureLogOut = 'Are You Sure you want to log out?';
 
 
   static const aboutUsDescription =

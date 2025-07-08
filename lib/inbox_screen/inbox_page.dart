@@ -47,6 +47,7 @@ class InboxPage extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               sliver: SliverAppBar(
+                leading: SizedBox(),
                 surfaceTintColor: Colors.transparent,
                 floating: true,
                 toolbarHeight: 80,
@@ -119,7 +120,10 @@ class InboxPage extends StatelessWidget {
 
   Widget _requestAndiNboxListTile(InboxMessage item, context) {
     return InkWell(
-      onTap: (tab.value == 0) ? () => Get.toNamed(AppRoutes.chatPage) : () => showAcceptDeclineDialog(context),
+      onTap:
+          (tab.value == 0)
+              ? () => Get.toNamed(AppRoutes.chatPage)
+              : () => showAcceptDeclineDialog(context),
       child: ListTile(
         style: ListTileStyle.list,
         leading: CircleAvatar(
@@ -242,7 +246,4 @@ class InboxPage extends StatelessWidget {
   //               );
   //             },
   //           );
-
-  
-
 }

@@ -1,6 +1,7 @@
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
+import 'package:fleet_sync/custom_widgets/logoutPopUP.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -83,19 +84,20 @@ class DrawerPage extends StatelessWidget {
           ),
           SizedBox(height: 435, width: double.infinity, child: _buildOptions()),
           SizedBox(height: 81),
-          _logOutButton(),
+          _logOutButton(context),
           Spacer(),
         ],
       ),
     );
   }
 
-  Widget _logOutButton() {
+  Widget _logOutButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 25),
       child: InkWell(
         onTap: () {
-          Get.toNamed(pages[10]);
+          logOutPopUp(context);
+          // Get.toNamed(pages[10]);
         },
         child: Row(
           children: [

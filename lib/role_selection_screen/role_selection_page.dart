@@ -38,12 +38,10 @@ class RoleSelectionPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 69),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _selectRoleText(),
             ..._generatingButton(isDark),
 
-            Text('${roleSelectionController.selectedIndex.value}'),
           ],
         ),
       );

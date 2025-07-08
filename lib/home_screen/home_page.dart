@@ -136,6 +136,7 @@ class HomePage extends StatelessWidget {
       padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
       sliver: SliverAppBar(
         elevation: 0,
+              leading: SizedBox(),
         actions: [SizedBox()],
         collapsedHeight: 63,
         flexibleSpace: Align(

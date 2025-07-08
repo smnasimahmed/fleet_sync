@@ -109,7 +109,9 @@ class TruckSalesPage extends StatelessWidget {
               AppRoutes.truckDetailsPage,
               arguments: {
                 'deletePostOnPressed': () {},
-                'editPostOnPressed': Get.toNamed(AppRoutes.truckSellPostFormPage),
+                'editPostOnPressed': Get.toNamed(
+                  AppRoutes.truckSellPostFormPage,
+                ),
                 'sendRequestOnPressed': () {},
                 'ownPost': true,
               },
@@ -154,6 +156,7 @@ Widget _searchBar() {
   return SliverPadding(
     padding: EdgeInsetsDirectional.only(top: 17),
     sliver: SliverAppBar(
+      leading: SizedBox(),
       elevation: 0,
       actions: [SizedBox()],
       collapsedHeight: 63,

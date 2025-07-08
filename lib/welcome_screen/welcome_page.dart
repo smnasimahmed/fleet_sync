@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 43, right: 20, left: 20),
         child: customElevatedButton(
           title: ConstStrings.letsGetStarted,
-          onPressed: () => Get.toNamed(AppRoutes.homePage),
+          onPressed: () => Get.toNamed(AppRoutes.navbar),
         ),
       ),
       body: Center(

@@ -12,11 +12,13 @@ import 'package:fleet_sync/truck_sales_screen/truck_sales_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Navbar extends StatelessWidget {
-  const Navbar({super.key});
+  Navbar({super.key});
 
   static const double drawerWidth = 290.0;
+  final role = GetStorage();
   @override
   Widget build(BuildContext context) {
     List<String> iconLabel = [
@@ -45,15 +47,17 @@ class Navbar extends StatelessWidget {
       FuelCardPage(),
     ];
 
-    RxInt selectedIndex = 2.obs;
+    RxInt selectedIndex = 0.obs;
 
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return SafeArea(
       child: Scaffold(
+        
         key: scaffoldKey,
         endDrawer: SizedBox(width: drawerWidth, child: DrawerPage()),
         appBar: AppBar(
+          leading: SizedBox(),
           surfaceTintColor: Colors.transparent,
           flexibleSpace: Padding(
             padding: const EdgeInsets.only(left: 20.0),
@@ -77,7 +81,7 @@ class Navbar extends StatelessWidget {
     );
   }
 
-  Container _navbar(
+  Widget _navbar(
     List<String> iconLabel,
     List<String> icons,
     RxInt selectedIndex,
@@ -92,41 +96,61 @@ class Navbar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: List.generate(iconLabel.length, (index) {
-              return Expanded(
-                child: Obx(
-                  () => InkWell(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          icons[index],
-                          colorFilter: ColorFilter.mode(
-                            selectedIndex == index
-                                ? ConstColours.colorGreen
-                                : ConstColours.offWhite,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        Customtext(
-                          title: iconLabel[index],
-                          textSize: 10,
-                          maxLine: 1,
-
-                          fontWeight: FontWeight.w500,
-                          textColor:
-                              (selectedIndex.value == index)
-                                  ? TextColor.colorGreen
-                                  : TextColor.colorOffWhite,
-                        ),
-                      ],
-                    ),
-                    onTap: () => selectedIndex.value = index,
-                  ),
-                ),
-              );
+              // return
+              if (role.read('role') == 2 ||
+                  role.read('role') == 3 ||
+                  role.read('role') == 4) {
+                if (index == 3 || index == 5) {
+                  return SizedBox();
+                } else {
+                  return _generateItem(icons, index, selectedIndex, iconLabel);
+                }
+              } else {
+                return _generateItem(icons, index, selectedIndex, iconLabel);
+              }
             }),
           ),
         ],
+      ),
+    );
+  }
+
+  Expanded _generateItem(
+    List<String> icons,
+    int index,
+    RxInt selectedIndex,
+    List<String> iconLabel,
+  ) {
+    return Expanded(
+      child: Obx(
+        () => InkWell(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                icons[index],
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == index
+                      ? ConstColours.colorGreen
+                      : ConstColours.offWhite,
+                  BlendMode.srcIn,
+                ),
+              ),
+              Customtext(
+                title: iconLabel[index],
+                textSize: 10,
+                maxLine: 1,
+
+                fontWeight: FontWeight.w500,
+                textColor:
+                    (selectedIndex.value == index)
+                        ? TextColor.colorGreen
+                        : TextColor.colorOffWhite,
+              ),
+            ],
+          ),
+          onTap: () => selectedIndex.value = index,
+        ),
       ),
     );
   }
