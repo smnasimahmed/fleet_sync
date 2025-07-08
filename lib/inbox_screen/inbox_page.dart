@@ -3,12 +3,14 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
+import 'package:fleet_sync/inbox_screen/component/inbox_dialouge.dart';
 import 'package:fleet_sync/models/inbox_message_models.dart';
+import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChatsPage extends StatelessWidget {
-  ChatsPage({super.key});
+class InboxPage extends StatelessWidget {
+  InboxPage({super.key});
 
   final RxBool isSelected = true.obs;
   final RxInt tab = 0.obs;
@@ -42,16 +44,6 @@ class ChatsPage extends StatelessWidget {
         ),
         body: CustomScrollView(
           slivers: [
-            // SliverPadding(
-            //   padding: EdgeInsets.symmetric(horizontal: 20),
-            //   sliver: SliverAppBar(
-            //     surfaceTintColor: Colors.transparent,
-
-            //     flexibleSpace: _tabName(),
-            //     toolbarHeight: 30,
-            //     pinned: true,
-            //   ),
-            // ),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               sliver: SliverAppBar(
@@ -120,31 +112,34 @@ class ChatsPage extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
         final item = data[index];
-        return _requestAndiNboxListTile(item);
+        return _requestAndiNboxListTile(item, context);
       }, childCount: data.length),
     );
   }
 
-  ListTile _requestAndiNboxListTile(InboxMessage item) {
-    return ListTile(
-      style: ListTileStyle.list,
-      leading: CircleAvatar(
-        radius: 18.95,
-        child: Image.asset('assets/images/person_image1.png'),
+  Widget _requestAndiNboxListTile(InboxMessage item, context) {
+    return InkWell(
+      onTap: (tab.value == 0) ? () => Get.toNamed(AppRoutes.chatPage) : () => showAcceptDeclineDialog(context),
+      child: ListTile(
+        style: ListTileStyle.list,
+        leading: CircleAvatar(
+          radius: 18.95,
+          child: Image.asset('assets/images/person_image1.png'),
+        ),
+        title: Customtext(
+          maxLine: 1,
+          title: item.senderName,
+          textColor: TextColor.colorGreen,
+          textSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+        subtitle: Customtext(
+          maxLine: 1,
+          title: item.lastMessage,
+          textColor: TextColor.colorOffWhite,
+        ),
+        trailing: (tab == 0) ? _inboxTrailing() : _requestTrailing(),
       ),
-      title: Customtext(
-        maxLine: 1,
-        title: item.senderName,
-        textColor: TextColor.colorGreen,
-        textSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-      subtitle: Customtext(
-        maxLine: 1,
-        title: item.lastMessage,
-        textColor: TextColor.colorOffWhite,
-      ),
-      trailing: (tab == 0) ? _inboxTrailing() : _requestTrailing(),
     );
   }
 
@@ -247,48 +242,7 @@ class ChatsPage extends StatelessWidget {
   //               );
   //             },
   //           );
-  Widget _tabName() {
-    return Obx(
-      () => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            child: Customtext(
-              title: ConstStrings.inbox,
-              textSize: 18,
-              fontWeight: FontWeight.w600,
-              textColor:
-                  isSelected.value
-                      ? TextColor.colorGreen
-                      : TextColor.colorOffWhite,
-            ),
-            onTap: () {
-              if (tab.value == 1) {
-                isSelected.value = true;
-                tab.value = 0;
-              }
-            },
-          ),
 
-          GestureDetector(
-            child: Customtext(
-              title: ConstStrings.requests,
-              textSize: 18,
-              fontWeight: FontWeight.w600,
-              textColor:
-                  isSelected.value
-                      ? TextColor.colorOffWhite
-                      : TextColor.colorGreen,
-            ),
-            onTap: () {
-              if (tab.value == 0) {
-                isSelected.value = false;
-                tab.value = 1;
-              }
-            },
-          ),
-        ],
-      ),
-    );
-  }
+  
+
 }

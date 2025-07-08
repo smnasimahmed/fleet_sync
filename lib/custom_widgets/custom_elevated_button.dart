@@ -10,12 +10,15 @@ Widget customElevatedButton({
   double fontSize = 16,
   double width = double.infinity,
   double top = 12,
+  double right = 0,
+  double left = 0,
+  double bottom = 0,
   FontWeight fontWeight = FontWeight.w600,
   double horizontal = 20,
   // double vertical = 8,
 }) {
   return Padding(
-    padding: EdgeInsets.only(top: top), //12
+    padding: EdgeInsets.only(top: top, right: right, left:left,bottom:  bottom), //12
     child: ElevatedButton(
       onPressed: onPressed ?? () => print("Elevated Button Pressed"),
       style: ElevatedButton.styleFrom(

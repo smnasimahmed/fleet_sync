@@ -194,6 +194,7 @@ static const getNow = 'Get Now';
 static const createNow = 'Create Now';
 static const editPost = 'Edit Post';
 static const postList = 'Post List';
+static const send = 'Send';
 
 
   static const aboutUsDescription =

@@ -1,4 +1,4 @@
-import 'package:fleet_sync/chats_screen/chats_page.dart';
+import 'package:fleet_sync/inbox_screen/inbox_page.dart';
 import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
@@ -39,13 +39,13 @@ class Navbar extends StatelessWidget {
     List<Widget> pages = [
       HomePage(),
       MapPage(),
-      ChatsPage(),
+      InboxPage(),
       ListPage(),
       TruckSalesPage(),
       FuelCardPage(),
     ];
 
-    RxInt selectedIndex = 4.obs;
+    RxInt selectedIndex = 2.obs;
 
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 

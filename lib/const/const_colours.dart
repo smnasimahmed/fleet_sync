@@ -10,4 +10,5 @@ class ConstColours {
   static const transparentGreen = Color.fromARGB(20, 0, 164, 49);
   static const black = Colors.black;
   static const red = Color(0xFFDD1B49);
+  static const gunmetalGray = Color(0xFF2B2B37);
 }

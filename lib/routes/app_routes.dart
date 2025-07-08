@@ -39,4 +39,5 @@ class AppRoutes {
   static const truckDetailsPage = '/truckDetailsPage';
   static const cardkDetailsPage = '/cardkDetailsPage';
   static const truckSellPostFormPage = '/truckSellPostFormPage';
+  static const chatPage = '/chatPage';
 }

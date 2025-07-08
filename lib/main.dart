@@ -20,9 +20,10 @@ class MainApp extends StatelessWidget {
       theme: themeDataLight,
       darkTheme: themeDataDark,
       themeMode: ThemeMode.dark,
-      // home: Navbar(),
+      // home: ChatPage(),
       initialRoute: AppRoutes.navbar, //AppRoutes.navbar,
       getPages: appRouteFile,
-      debugShowCheckedModeBanner: false,    );
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

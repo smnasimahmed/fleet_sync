@@ -6,6 +6,7 @@ import 'package:fleet_sync/edit_profile_screen/edit_profile_page.dart';
 import 'package:fleet_sync/faq_screen/faq_page.dart';
 import 'package:fleet_sync/forgot_password/forgot_password_page.dart';
 import 'package:fleet_sync/home_screen/home_page.dart';
+import 'package:fleet_sync/inbox_screen/component/chat_page.dart';
 import 'package:fleet_sync/language_screen/language_page.dart';
 import 'package:fleet_sync/log_out_popUp/log_out_popUp_page.dart';
 import 'package:fleet_sync/login_screen/login_page.dart';
@@ -114,5 +115,9 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(
     name: AppRoutes.truckSellPostFormPage,
     page: () => TruckSellPostFormPage(),
+  ),
+   GetPage(
+    name: AppRoutes.chatPage,
+    page: () => ChatPage(),
   ),
 ];
