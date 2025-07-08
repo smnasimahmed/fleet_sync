@@ -3,7 +3,7 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/customAppBar.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
-import 'package:fleet_sync/truck_details_screen/truc_detail_controller.dart';
+import 'package:fleet_sync/truck_details_screen/controller/truck_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
