@@ -6,6 +6,7 @@ import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
 import 'package:fleet_sync/models/comapany_models.dart';
 import 'package:fleet_sync/models/company_truck_abstract.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/scroll_unfocus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -17,10 +18,14 @@ class ListPage extends StatelessWidget {
       FeedCompanyModels().getFeedCompanyData();
   @override
   Widget build(BuildContext context) {
+      // final ScrollUnfocus controller = Get.find<ScrollUnfocus>();
     return SafeArea(
       child: Scaffold(
-        body: CustomScrollView(
-          slivers: [_searchBar(), _popularCompanyTitle(), _listGridView()],
+        body: ScrollUnfocusWrapper(
+          child: CustomScrollView(
+            // controller: controller.listscrollController,
+            slivers: [_searchBar(), _popularCompanyTitle(), _listGridView()],
+          ),
         ),
       ),
     );

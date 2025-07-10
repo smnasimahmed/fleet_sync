@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ChatPage extends StatefulWidget {
-  ChatPage({super.key});
+  const ChatPage({super.key});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -24,9 +24,10 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
     return SafeArea(
       child: Scaffold(
-        bottomSheet: SafeArea(child: _chatInputField()),
+        bottomNavigationBar: SafeArea(child: _chatInputField(bottomPadding)),
          appBar: AppBar(
           surfaceTintColor: Colors.transparent,
           leading: InkWell(
@@ -63,7 +64,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20.0,right: 20,bottom: 80),
+          padding: const EdgeInsets.only(left: 20.0,right: 20,),
           child: FutureBuilder(
             future: future,
             builder: (context, snapshot) {
@@ -132,12 +133,12 @@ class _ChatPageState extends State<ChatPage> {
           );
   }
 
-  Widget _chatInputField() {
+  Widget _chatInputField(double bottomPadding) {
     return Padding(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: 20,
         right: 20,
-        bottom: 10,
+        bottom: bottomPadding+10 ,
         top: 10,
       ),
       child: SizedBox(

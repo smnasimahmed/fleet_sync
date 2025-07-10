@@ -6,6 +6,7 @@ import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/inbox_screen/component/inbox_dialouge.dart';
 import 'package:fleet_sync/models/inbox_message_models.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/scroll_unfocus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,7 @@ class InboxPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final ScrollUnfocus controller = Get.find<ScrollUnfocus>();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -42,29 +44,33 @@ class InboxPage extends StatelessWidget {
             ),
           ],
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              sliver: SliverAppBar(
-                leading: SizedBox(),
-                surfaceTintColor: Colors.transparent,
-                floating: true,
-                toolbarHeight: 80,
-                flexibleSpace: CustomTextFormField(
-                  title: '',
-                  hintText: ConstStrings.searchHere,
-                  fieldType: FieldType.search,
+        body: ScrollUnfocusWrapper(
+          child: CustomScrollView(
+            // controller: controller.scrollController,
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                sliver: SliverAppBar(
+                  leading: SizedBox(),
+                  surfaceTintColor: Colors.transparent,
+                  toolbarHeight: 80,
+                  flexibleSpace: CustomTextFormField(
+                    title: '',
+                    hintText: ConstStrings.searchHere,
+                    fieldType: FieldType.search,
+                  ),
                 ),
               ),
-            ),
-            Obx(
-              () =>
-                  (tab.value == 0)
+              Obx(
+                () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  return (tab.value == 0)
                       ? tabItem(isRequestTab: false)
-                      : tabItem(isRequestTab: true), // tabItem()
-            ),
-          ],
+                      : tabItem(isRequestTab: true); // tabItem()
+                }
+              ),
+            ],
+          ),
         ),
       ),
     );

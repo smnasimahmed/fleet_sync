@@ -6,8 +6,7 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child: Row(
           children: [
             Image.asset(
@@ -49,7 +48,7 @@ class Logo extends StatelessWidget {
             ),
           ],
         ),
-      ),
+   
     );
   }
 }

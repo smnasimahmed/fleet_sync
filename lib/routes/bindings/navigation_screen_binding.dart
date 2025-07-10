@@ -1,3 +1,4 @@
+import 'package:fleet_sync/home_controller.dart';
 import 'package:fleet_sync/navbar/controller/navbar_controller.dart';
 import 'package:fleet_sync/personal_info_registration_screen/controller/radioController.dart';
 import 'package:fleet_sync/role_selection_screen/role_selection_controller/role_selection_controller.dart';
@@ -12,5 +13,6 @@ class NavigationScreenBinding extends Bindings {
     Get.lazyPut(() => RadioController());
     Get.lazyPut(() => NavbarController());
     Get.lazyPut(() => TruckDetailsController());
+    // Get.lazyPut(() => ScrollUnfocus());
   }
 }

@@ -8,6 +8,7 @@ import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
 import 'package:fleet_sync/models/company_truck_abstract.dart';
 import 'package:fleet_sync/models/truck_models.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/scroll_unfocus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -92,8 +93,10 @@ class TruckSalesPage extends StatelessWidget {
   Widget _page1() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: CustomScrollView(
-        slivers: [_searchBar(), _truckSalesTitle(), _listGridView()],
+      child: ScrollUnfocusWrapper(
+        child: CustomScrollView(
+          slivers: [_searchBar(), _truckSalesTitle(), _listGridView()],
+        ),
       ),
     );
   }

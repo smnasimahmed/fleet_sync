@@ -3,12 +3,14 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_search_bar.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
+import 'package:fleet_sync/home_controller.dart';
 import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
 import 'package:fleet_sync/home_screen/components/sliverListView.dart';
 import 'package:fleet_sync/models/comapany_models.dart';
 import 'package:fleet_sync/models/truck_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +18,6 @@ class HomePage extends StatelessWidget {
 
   static const double drawerWidth = 290.0;
 
-  final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
   final List<String> serviceName = [
     ConstStrings.dispatchService,
@@ -43,13 +44,12 @@ class HomePage extends StatelessWidget {
     // final truckList = TruckModels().getTruckData();
     // final comapnyList = CompanyModels().getCompanyData(); // Will Pass it later
 
-    return Scaffold(
-      key: scaffoldkey,
-      // endDrawer: SizedBox(width: drawerWidth, child: DrawerPage()),
-      body: SafeArea(
+  final ScrollUnfocus controller = Get.find<ScrollUnfocus>();
+
+    return SafeArea(
         child: CustomScrollView(
+          controller:controller.scrollController,
           slivers: [
-            // _appbar(),
             _searchBar(),
             _gridView(),
             SliverToBoxAdapter(child: SizedBox(height: 20)),
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
             _trucSaleList(),
           ],
         ),
-      ),
+
     );
   }
 
@@ -160,24 +160,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  // SliverPadding _appbar() {
-  //   return SliverPadding(
-  //     padding: EdgeInsetsDirectional.symmetric(horizontal: 20),
-  //     sliver: SliverAppBar(
-  //       backgroundColor: Colors.transparent,
-  //       elevation: 0,
-  //       collapsedHeight: 63,
-  //       flexibleSpace: const Logo(),
-  //       expandedHeight: 35,
-  //       pinned: true,
-  //     ),
-  //   );
-  // }
-
-  // void opendrawer() {
-  //   scaffoldkey.currentState!.openEndDrawer();
-  // }
 
   SizedBox _cardChoose() {
     return SizedBox(
@@ -303,32 +285,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-// class ExploreData {
-//   final List<Truck> truckList;
-//   final List<Company> comapnyList;
-
-//   ExploreData(this.truckList, this.comapnyList);
-// }
-
-// // Mock Yummy service that grabs sample data to mock up a food app request/response
-// class MockYummyService {
-//   // Batch request that gets both today recipes and friend's feed
-//   Future<ExploreData> getExploreData() async {
-//     final truckList = await TruckModels().getTruckData();
-//     final comapnyList = await CompanyModels().getCompanyData();
-
-//     return ExploreData(truckList, comapnyList);
-//   }
-// }
-
-// void fetchData() async {
-//   final exploreData = await MockYummyService().getExploreData();
-
-//   // Now you can access them directly:
-//   final trucks = exploreData.truckList;
-//   final companies = exploreData.comapnyList;
-
-//   print(trucks.length);
-//   print(companies.length);
-// }

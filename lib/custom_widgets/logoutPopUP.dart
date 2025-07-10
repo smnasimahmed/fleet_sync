@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
@@ -12,35 +14,38 @@ Future<void> logOutPopUp(BuildContext context) {
     context: context,
     barrierDismissible: true,
     builder: (context) {
-      return Dialog(
-        backgroundColor: ConstColours.appDarktBackGround, // dark background
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 246,
-                child: Customtext(
-                  textAlign: TextAlign.center,
-                  title: ConstStrings.areYouSureLogOut,
-                  textColor: TextColor.colorWhite,
-                  fontWeight: FontWeight.w500,
-                  textSize: 16,
+      return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
+        child: Dialog(
+          backgroundColor: ConstColours.appDarktBackGround, // dark background
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 246,
+                  child: Customtext(
+                    textAlign: TextAlign.center,
+                    title: ConstStrings.areYouSureLogOut,
+                    textColor: TextColor.colorWhite,
+                    fontWeight: FontWeight.w500,
+                    textSize: 16,
+                  ),
                 ),
-              ),
-              SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _noButton(context),
-                  SizedBox(width: 12),
-                  _yesButton(context),
-                ],
-              ),
-            ],
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _noButton(context),
+                    SizedBox(width: 12),
+                    _yesButton(context),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       );

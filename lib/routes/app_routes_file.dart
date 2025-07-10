@@ -116,8 +116,9 @@ List<GetPage> appRouteFile = <GetPage>[
     name: AppRoutes.truckSellPostFormPage,
     page: () => TruckSellPostFormPage(),
   ),
-   GetPage(
+  GetPage(
     name: AppRoutes.chatPage,
+    transition: Transition.noTransition,
     page: () => ChatPage(),
   ),
 ];

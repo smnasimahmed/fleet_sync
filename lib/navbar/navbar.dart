@@ -53,7 +53,7 @@ class Navbar extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        
+        resizeToAvoidBottomInset: true,
         key: scaffoldKey,
         endDrawer: SizedBox(width: drawerWidth, child: DrawerPage()),
         appBar: AppBar(
@@ -69,7 +69,19 @@ class Navbar extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 32.0),
                 child: Icon(Icons.menu_rounded),
               ),
-              onTap: () => scaffoldKey.currentState!.openEndDrawer(),
+              onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+                Future.doWhile(() async {
+                  await Future.delayed(
+                    const Duration(milliseconds: 16),
+                  ); // one frame
+                  if (WidgetsBinding.instance.window.viewInsets.bottom > 0.0) {
+                    return true; // keep waiting
+                  }
+                  scaffoldKey.currentState!.openEndDrawer();
+                  return false; // stop loop
+                });
+              },
             ),
           ],
         ),
@@ -90,27 +102,22 @@ class Navbar extends StatelessWidget {
       height: 64,
       decoration: BoxDecoration(color: ConstColours.appDarktBackGround),
       padding: EdgeInsets.all(5),
-      child: Wrap(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: List.generate(iconLabel.length, (index) {
-              // return
-              if (role.read('role') == 2 ||
-                  role.read('role') == 3 ||
-                  role.read('role') == 4) {
-                if (index == 3 || index == 5) {
-                  return SizedBox();
-                } else {
-                  return _generateItem(icons, index, selectedIndex, iconLabel);
-                }
-              } else {
-                return _generateItem(icons, index, selectedIndex, iconLabel);
-              }
-            }),
-          ),
-        ],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: List.generate(iconLabel.length, (index) {
+          // return
+          if (role.read('role') == 2 ||
+              role.read('role') == 3 ||
+              role.read('role') == 4) {
+            if (index == 3 || index == 5) {
+              return SizedBox();
+            } else {
+              return _generateItem(icons, index, selectedIndex, iconLabel);
+            }
+          } else {
+            return _generateItem(icons, index, selectedIndex, iconLabel);
+          }
+        }),
       ),
     );
   }

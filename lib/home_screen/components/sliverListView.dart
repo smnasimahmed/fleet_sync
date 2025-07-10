@@ -8,7 +8,8 @@ class CustomListview extends StatelessWidget {
   final void Function() onPressed;
   final void Function() bookMarkonTap;
   final void Function()? shareOntap;
-  
+
+
   const CustomListview({
     super.key,
     required this.cardMode,
@@ -20,6 +21,7 @@ class CustomListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        // final HomeController controller = Get.put(HomeController());
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 228,
@@ -35,6 +37,7 @@ class CustomListview extends StatelessWidget {
             } else {
               final feedItems = snapshot.data!;
               return ListView.builder(
+                // controller: controller.scrollController,
                 scrollDirection: Axis.horizontal,
                 itemCount: feedItems.length,
                 itemBuilder: (context, index) {
