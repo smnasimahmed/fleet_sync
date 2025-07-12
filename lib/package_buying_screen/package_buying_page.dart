@@ -82,7 +82,7 @@ class PackageBuyingPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: FilledButton(
-                  onPressed: () {},
+                  onPressed:  () => Get.toNamed(AppRoutes.paymentPage), 
 
                   child: Customtext(
                     title: ConstStrings.buyNow,
@@ -110,7 +110,7 @@ Widget _trialCancleButton() {
             customElevatedButton(
               title: ConstStrings.start3DaysFreeTrial,
               color: ConstColours.colorGreen,
-              onPressed: () => Get.toNamed(AppRoutes.paymentPage),
+              onPressed: () => Get.toNamed(AppRoutes.welcomePage), //paymentPage
             ),
             customElevatedButton(
               title: ConstStrings.cancel,

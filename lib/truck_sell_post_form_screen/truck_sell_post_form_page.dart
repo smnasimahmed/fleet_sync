@@ -3,17 +3,22 @@ import 'package:fleet_sync/custom_widgets/customAppBar.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
+import 'package:fleet_sync/truck_sell_post_form_screen/controller/upload_Image_Controler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class TruckSellPostFormPage extends StatelessWidget {
-  const TruckSellPostFormPage({super.key});
+  TruckSellPostFormPage({super.key});
+
+final UploadImageControler controller = Get.find<UploadImageControler>();
 
   @override
   Widget build(BuildContext context) {
+      List<String> argumentData = Get.arguments;
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: ConstStrings.createAPost),
+        appBar: CustomAppBar(title: argumentData[0]),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -46,16 +51,22 @@ class TruckSellPostFormPage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
                 Center(
-                  child: Column(
-                    children: [
-                      SvgPicture.asset('assets/icons/uploadImage.svg'),
-                      SizedBox(height: 12,),
-                      SvgPicture.asset('assets/icons/add_Image_Icon.svg'),
-                      SizedBox(height: 20,)
-                    ],
+                  child: GestureDetector(
+                    onTap: ()async{
+                      await controller.requestStorageAndCameraPermissions();
+                      await controller.requestPhotosPermissionAndPick(isSingleImage: true);
+                    } ,
+                    child: Column(
+                      children: [
+                        SvgPicture.asset('assets/icons/uploadImage.svg'),
+                        SizedBox(height: 12,),
+                        SvgPicture.asset('assets/icons/add_Image_Icon.svg'),
+                        SizedBox(height: 20,)
+                      ],
+                    ),
                   ),
                 ),
-                customElevatedButton(title: ConstStrings.postNow, onPressed: null)
+                customElevatedButton(title: argumentData[1], onPressed: null)
               ],
             ),
           ),

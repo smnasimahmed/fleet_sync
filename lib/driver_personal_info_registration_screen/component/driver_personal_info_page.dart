@@ -1,18 +1,26 @@
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/customRadio.dart';
+import 'package:fleet_sync/custom_widgets/custom_dropdown_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
-import 'package:fleet_sync/personal_info_registration_screen/controller/radioController.dart';
+import 'package:fleet_sync/driver_personal_info_registration_screen/controller/radioController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
 import 'package:get/get.dart';
 
-class PersonalInfoPage extends StatelessWidget {
-  const PersonalInfoPage({super.key});
+class DriverPersonalInfoPage extends StatelessWidget {
+  const DriverPersonalInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<RadioController>();
+    List<DropdownMenuItem<int>> list = [
+      DropdownMenuItem(value: 0, child: Text('CDL Types 1')),
+      DropdownMenuItem(value: 1, child: Text('CDL Types 2')),
+      DropdownMenuItem(value: 2, child: Text('CDL Types 3')),
+      DropdownMenuItem(value: 3, child: Text('CDL Types 4')),
+      DropdownMenuItem(value: 4, child: Text('CDL Types 5')),
+    ];
     return Obx(
       () => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,10 +34,13 @@ class PersonalInfoPage extends StatelessWidget {
           ),
           Text(ConstStrings.uploadPhoto),
           Center(
-            child: SvgPicture.asset(
-              'assets/icons/uploadImage.svg',
-              height: 95,
-              width: 98,
+            child: GestureDetector(
+              onTap: () {},
+              child: SvgPicture.asset(
+                'assets/icons/uploadImage.svg',
+                height: 95,
+                width: 98,
+              ),
             ),
           ),
           CustomTextFormField(title: ConstStrings.fullName),
@@ -58,7 +69,7 @@ class PersonalInfoPage extends StatelessWidget {
             title: ConstStrings.accidentsOrViolationsRecordLast2Years,
           ),
           CustomTextFormField(title: ConstStrings.previousCompany),
-          CustomTextFormField(title: ConstStrings.cdlTypes),
+          CustomDropdownFormField(title: ConstStrings.cdlTypes, list: list),
           Text(ConstStrings.tEndorsement),
           _tEndoursement(controller),
           SizedBox(

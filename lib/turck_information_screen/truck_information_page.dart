@@ -11,7 +11,7 @@ class TruckInformationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 43.0),
+        padding: const EdgeInsets.only(bottom: 43.0,right: 20,left: 20),
         child: SkipNextButton(),
       ),
       appBar: CustomAppBar(title: ConstStrings.registration),

@@ -72,7 +72,11 @@ class TruckSalesPage extends StatelessWidget {
             child: customElevatedButton(
               top: 21,
               title: ConstStrings.createNow,
-              onPressed: () => Get.toNamed(AppRoutes.truckSellPostFormPage),
+              onPressed:
+                  () => Get.toNamed(
+                    AppRoutes.truckSellPostFormPage,
+                    arguments: [ConstStrings.createAPost, ConstStrings.postNow],
+                  ),
             ),
           ),
           SliverToBoxAdapter(
@@ -111,11 +115,6 @@ class TruckSalesPage extends StatelessWidget {
             () => Get.toNamed(
               AppRoutes.truckDetailsPage,
               arguments: {
-                'deletePostOnPressed': () {},
-                'editPostOnPressed': Get.toNamed(
-                  AppRoutes.truckSellPostFormPage,
-                ),
-                'sendRequestOnPressed': () {},
                 'ownPost': true,
               },
             ),
@@ -132,9 +131,6 @@ class TruckSalesPage extends StatelessWidget {
             () => Get.toNamed(
               AppRoutes.truckDetailsPage,
               arguments: {
-                'deletePostOnPressed': () {},
-                'editPostOnPressed': () {},
-                'sendRequestOnPressed': () {},
                 'ownPost': false,
               },
             ),

@@ -1,7 +1,7 @@
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/customAppBar.dart';
 import 'package:fleet_sync/custom_widgets/skip_nextButton.dart';
-import 'package:fleet_sync/personal_info_registration_screen/component/personal_info_page.dart';
+import 'package:fleet_sync/driver_personal_info_registration_screen/component/driver_personal_info_page.dart';
 import 'package:fleet_sync/turck_information_screen/component/truck_info_form_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class EditProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(children: [PersonalInfoPage(), TruckInfoFormBody()]),
+          child: Column(children: [DriverPersonalInfoPage(), TruckInfoFormBody()]),
         ),
       ),
     );

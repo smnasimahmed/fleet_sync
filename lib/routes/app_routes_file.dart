@@ -15,7 +15,7 @@ import 'package:fleet_sync/notifications_screen/notifications_page.dart';
 import 'package:fleet_sync/otp_screen/otp_page.dart';
 import 'package:fleet_sync/package_buying_screen/package_buying_page.dart';
 import 'package:fleet_sync/payment_page/payment_page.dart';
-import 'package:fleet_sync/personal_info_registration_screen/personal_info_registration_page.dart';
+import 'package:fleet_sync/driver_personal_info_registration_screen/driver_personal_info_registration_page.dart';
 import 'package:fleet_sync/privarcy_policy_screen/privarcy_policy_page.dart';
 import 'package:fleet_sync/report_problem_screen/report_problem_page.dart';
 import 'package:fleet_sync/role_selection_screen/role_selection_page.dart';
@@ -69,8 +69,8 @@ List<GetPage> appRouteFile = <GetPage>[
     binding: NavigationScreenBinding(),
   ),
   GetPage(
-    name: AppRoutes.personalInfoReg,
-    page: () => PersonalInfoRegistrationPage(),
+    name: AppRoutes.driverPersonalInfoReg,
+    page: () => DriverPersonalInfoRegistrationPage(),
     binding: NavigationScreenBinding(),
   ),
   GetPage(name: AppRoutes.truckInformation, page: () => TruckInformationPage()),
@@ -115,6 +115,7 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(
     name: AppRoutes.truckSellPostFormPage,
     page: () => TruckSellPostFormPage(),
+    binding: NavigationScreenBinding(),
   ),
   GetPage(
     name: AppRoutes.chatPage,

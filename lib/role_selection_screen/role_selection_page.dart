@@ -25,7 +25,7 @@ class RoleSelectionPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: customElevatedButton(
             title: ConstStrings.continu,
-            onPressed: () => Get.toNamed(AppRoutes.personalInfoReg),
+            onPressed: () => Get.toNamed(AppRoutes.driverPersonalInfoReg),
           ),
         ),
       ),

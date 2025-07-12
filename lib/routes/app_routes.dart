@@ -5,7 +5,7 @@ class AppRoutes {
   static const setResetPassword = "/setResetPassword";
   static const forgotPassword = '/forgotPassword';
   static const roleSelection = '/roleSelection';
-  static const personalInfoReg = '/personalInfoReg';
+  static const driverPersonalInfoReg = '/driverPersonalInfoReg';
   static const truckInformation = '/truckInformation';
   static const packageBuying = '/packageBuying';
   static const paymentPage = '/paymentPage';

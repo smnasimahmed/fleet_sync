@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? hintText;
   final int maxLine;
   final int? minLines;
-  final FocusNode? focusNode;
+
 
   const CustomTextFormField({
     super.key,
@@ -19,7 +19,6 @@ class CustomTextFormField extends StatelessWidget {
     this.fieldType = FieldType.normal,
     this.maxLine = 1,
     this.minLines,
-    this.focusNode,
   });
 
   @override
@@ -42,7 +41,6 @@ class CustomTextFormField extends StatelessWidget {
             padding: const EdgeInsets.only(top: 4),
             child: Obx(() {
               return TextFormField(
-                focusNode: focusNode,
                 minLines: minLines,
                 maxLines: maxLine,
                 textInputAction: TextInputAction.newline,

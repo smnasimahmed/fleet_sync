@@ -47,7 +47,7 @@ class Navbar extends StatelessWidget {
       FuelCardPage(),
     ];
 
-    RxInt selectedIndex = 0.obs;
+    RxInt selectedIndex = 4.obs;
 
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 

@@ -3,14 +3,13 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_search_bar.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
-import 'package:fleet_sync/home_controller.dart';
 import 'package:fleet_sync/home_screen/components/popularCompanyCard.dart';
 import 'package:fleet_sync/home_screen/components/sliverListView.dart';
 import 'package:fleet_sync/models/comapany_models.dart';
 import 'package:fleet_sync/models/truck_models.dart';
+import 'package:fleet_sync/scroll_unfocus_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -44,22 +43,24 @@ class HomePage extends StatelessWidget {
     // final truckList = TruckModels().getTruckData();
     // final comapnyList = CompanyModels().getCompanyData(); // Will Pass it later
 
-  final ScrollUnfocus controller = Get.find<ScrollUnfocus>();
+  // final ScrollUnfocus controller = Get.find<ScrollUnfocus>();
 
     return SafeArea(
-        child: CustomScrollView(
-          controller:controller.scrollController,
-          slivers: [
-            _searchBar(),
-            _gridView(),
-            SliverToBoxAdapter(child: SizedBox(height: 20)),
-            _popularcompanyText(),
-            _popularComapanyList(),
-            SliverToBoxAdapter(child: SizedBox(height: 40)),
-            SliverToBoxAdapter(child: _cardChoose()),
-            _truckSaleText(),
-            _trucSaleList(),
-          ],
+        child: ScrollUnfocusWrapper(
+          child: CustomScrollView(
+            // controller:controller.scrollController,
+            slivers: [
+              _searchBar(),
+              _gridView(),
+              SliverToBoxAdapter(child: SizedBox(height: 20)),
+              _popularcompanyText(),
+              _popularComapanyList(),
+              SliverToBoxAdapter(child: SizedBox(height: 40)),
+              SliverToBoxAdapter(child: _cardChoose()),
+              _truckSaleText(),
+              _trucSaleList(),
+            ],
+          ),
         ),
 
     );

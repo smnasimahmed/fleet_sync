@@ -1,6 +1,6 @@
+import 'package:fleet_sync/driver_personal_info_registration_screen/driver_personal_info_registration_page.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:fleet_sync/routes/app_routes_file.dart';
-import 'package:fleet_sync/routes/root_bindings/root_bindings.dart';
 import 'package:fleet_sync/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,12 +26,12 @@ class MainApp extends StatelessWidget {
         darkTheme: themeDataDark,
         themeMode: ThemeMode.dark,
         defaultTransition: Transition.noTransition,
-        // home: ChatPage(),
-        initialRoute:
-            (logInSession.read('logInSession') == true)
-                ? AppRoutes.navbar
-                : AppRoutes.login, //AppRoutes.navbar,
-        initialBinding: RootBindings(),
+        // home: DriverPersonalInfoRegistrationPage(),
+        initialRoute: AppRoutes.driverPersonalInfoReg,
+            // (logInSession.read('logInSession') == true)
+            //     ? AppRoutes.navbar
+            //     : AppRoutes.login,
+        // initialBinding: RootBindings(),
         getPages: appRouteFile,
         debugShowCheckedModeBanner: false,
       ),

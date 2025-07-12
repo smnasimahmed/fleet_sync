@@ -172,32 +172,36 @@ class ConstStrings {
   static const saveChange = 'Save & Change';
   static const mileage = 'Mileage';
   static const location = 'Location';
-  static const onBehalfOf='On behalf of';
+  static const onBehalfOf = 'On behalf of';
   static const addImage = 'Add Image';
-static const postNow = 'Post Now';
-static const createAPost = 'Create a Post';
+  static const postNow = 'Post Now';
+  static const createAPost = 'Create a Post';
 
+  static const cardDetails = 'Card Details';
+  static const fuelOil = 'FUELOIL';
+  static const fuelFastPlusCard = 'FuelFast Plus Card';
+  static const cardDescription =
+      'A versatile and durable truck known for its driver comfort and performance. Equipped with the latest engine technology and aerodynamic design to maximize fuel savings.';
+  static const ratingAndReviews = '4.8 (45 Reviews)';
+  static const bulletinCardType = ' • Card Type: ';
+  static const bulletinAcceptedFuelStations = ' • Accepted Fuel Stations: ';
+  static const bulletinDiscountsAndOffers = ' • Discounts & Offers: ';
+  static const bulletinCreditLine = ' • Credit Line: ';
+  static const bulletinCardCompanyName = ' • Card Company Name: ';
+  static const bulletinLocation = ' • Location: ';
+  static const getNow = 'Get Now';
+  static const createNow = 'Create Now';
+  static const editPost = 'Edit Post';
+  static const postList = 'Post List';
+  static const send = 'Send';
+  static const areYouSureLogOut = 'Are You Sure you want to log out?';
 
-
-static const cardDetails = 'Card Details';
-static const fuelOil = 'FUELOIL';
-static const fuelFastPlusCard = 'FuelFast Plus Card';
-static const cardDescription = 'A versatile and durable truck known for its driver comfort and performance. Equipped with the latest engine technology and aerodynamic design to maximize fuel savings.';
-static const ratingAndReviews = '4.8 (45 Reviews)';
-static const bulletinCardType = ' • Card Type: ';
-static const bulletinAcceptedFuelStations = ' • Accepted Fuel Stations: ';
-static const bulletinDiscountsAndOffers = ' • Discounts & Offers: ';
-static const bulletinCreditLine = ' • Credit Line: ';
-static const bulletinCardCompanyName = ' • Card Company Name: ';
-static const bulletinLocation = ' • Location: ';
-static const getNow = 'Get Now';
-static const createNow = 'Create Now';
-static const editPost = 'Edit Post';
-static const postList = 'Post List';
-static const send = 'Send';
-static const areYouSureLogOut = 'Are You Sure you want to log out?';
-
-
+  static const success = 'Success';
+  static const cancelled = 'Cancelled';
+  static const imageSelected  = 'Image Selected: ';
+  static const noImageSelected  = 'No image selected.';
+  static const error  = 'Error';
+  static const failedToPickImage  = 'Failed to pick image';
   static const aboutUsDescription =
       '''FleetSync is a comprehensive mobile platform dedicated to revolutionizing the U.S. trucking and logistics industry. Our mission is to unify the entire ecosystem—professional drivers, truck owners, logistics companies, mechanics, cooks, and fuel providers—into one seamless, easy-to-use app.
 
