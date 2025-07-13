@@ -8,6 +8,7 @@ import 'package:fleet_sync/fuel_card_screen/fuel_card_page.dart';
 import 'package:fleet_sync/home_screen/home_page.dart';
 import 'package:fleet_sync/list_screen/list_page.dart';
 import 'package:fleet_sync/map_screen/map_page.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:fleet_sync/truck_sales_screen/truck_sales_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,7 +48,7 @@ class Navbar extends StatelessWidget {
       FuelCardPage(),
     ];
 
-    RxInt selectedIndex = 4.obs;
+    RxInt selectedIndex = 0.obs;
 
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -113,9 +114,14 @@ class Navbar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(iconLabel.length, (index) {
           // return
-          if (role.read('role') == 2 ||
-              role.read('role') == 3 ||
-              role.read('role') == 4) {
+          if (
+            // role.read('role') == 2 ||
+            //   role.read('role') == 3 ||
+            //   role.read('role') == 4
+            AppStorage().getLoginUserRole() == 2||
+            AppStorage().getLoginUserRole() == 3||
+            AppStorage().getLoginUserRole() == 4
+              ) {
             if (index == 3 || index == 5) {
               return SizedBox();
             } else {

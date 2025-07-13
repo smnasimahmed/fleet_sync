@@ -40,6 +40,7 @@ class CooksPersonalInfoRegistrationPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _cancleNextButton() {
     return Row(
       children: [
@@ -60,12 +61,7 @@ class CooksPersonalInfoRegistrationPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 9),
             child: customElevatedButton(
               title: ConstStrings.next,
-              onPressed: () {
-                if (controller.selectedTrailerOption.value == OwnATrailer.yes) {
-                  Get.toNamed(AppRoutes.truckInformation);
-                }
-                print('Wellcome');
-              },
+              onPressed: () => Get.offAllNamed(AppRoutes.packageBuying),
             ),
           ),
         ),

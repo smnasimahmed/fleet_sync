@@ -1,7 +1,6 @@
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/role_selection_screen/role_selection_controller/role_selection_controller.dart';
-import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +25,6 @@ class RoleSelectionPage extends StatelessWidget {
           child: customElevatedButton(
             title: ConstStrings.continu,
             onPressed: ()=> roleSelectionController.roleWiseFormNavigate(AppStorage().getLoginUserRole()),
-            // () => Get.toNamed(AppRoutes.driverPersonalInfoReg),
           ),
         ),
       ),

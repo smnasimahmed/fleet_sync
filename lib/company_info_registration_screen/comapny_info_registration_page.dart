@@ -3,6 +3,7 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/customAppBar.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/rememberMe.dart';
+import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +38,7 @@ class ComapnyInfoRegistrationPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _cancleNextButton() {
     return Row(
       children: [
@@ -57,8 +59,7 @@ class ComapnyInfoRegistrationPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 9),
             child: customElevatedButton(
               title: ConstStrings.next,
-              onPressed: () {
-              },
+              onPressed: () => Get.offAllNamed(AppRoutes.packageBuying),
             ),
           ),
         ),
