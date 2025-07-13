@@ -6,6 +6,7 @@ import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/custom_widgets/rememberMe.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,10 @@ class LoginPage extends StatelessWidget {
           loginOperation(),
           customElevatedButton(
             title: ConstStrings.signIn,
-            onPressed: () => Get.offAllNamed(AppRoutes.roleSelection),
+            onPressed: () {
+              Get.offAllNamed(AppRoutes.roleSelection);
+              AppStorage().setLoginUserRole(0);
+            },
           ),
           SizedBox(height: 162),
           registerButton(),

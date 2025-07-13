@@ -32,9 +32,9 @@ class RoleSelectionPage extends StatelessWidget {
     );
   }
 
-  Obx selectRole(bool isDark) {
+  Widget selectRole(bool isDark) {
     return Obx(() {
-      return Padding(
+      return       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 69),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,6 +51,7 @@ class RoleSelectionPage extends StatelessWidget {
   List<Widget> _generatingButton(bool isDark) {
     return List.generate(roleSelectionController.roles.length, (index) {
       final isSelected = roleSelectionController.selectedIndex.value == index;
+      // final isSelected = AppStorage().getLoginUserRole() == index;
 
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
@@ -59,37 +60,40 @@ class RoleSelectionPage extends StatelessWidget {
     });
   }
 
-  ElevatedButton _roleButton(int index, bool isDark, bool isSelected) {
-    return ElevatedButton(
-      onPressed: () {
-        roleSelectionController.selectedIndex.value = index;
-        AppStorage().setLoginUserRole(index);
-      },
-
-      style: ElevatedButton.styleFrom(
-        backgroundColor:
-            isSelected ? ConstColours.colorGreen : Colors.transparent,
-        foregroundColor: isDark ? Colors.white : Colors.black,
-        elevation: 0,
-        side: BorderSide(color: ConstColours.gray, width: 1),
-        textStyle: GoogleFonts.manrope(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        minimumSize: Size(double.infinity, 48),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 39.99, left: 5),
-            child: svgIcons(index, isDark),
+  Widget _roleButton(int index, bool isDark, bool isSelected) {
+ 
+        return ElevatedButton(
+          onPressed: () {
+            roleSelectionController.selectedIndex.value = index;
+            AppStorage().setLoginUserRole(index);
+          },
+        
+          style: ElevatedButton.styleFrom(
+            backgroundColor:
+                isSelected ? ConstColours.colorGreen : Colors.transparent,
+            foregroundColor: isDark ? Colors.white : Colors.black,
+            elevation: 0,
+            side: BorderSide(color: ConstColours.gray, width: 1),
+            textStyle: GoogleFonts.manrope(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            minimumSize: Size(double.infinity, 48),
           ),
-          Text(roleSelectionController.roles[index]),
-        ],
-      ),
-    );
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 39.99, left: 5),
+                child: svgIcons(index, isDark),
+              ),
+              Text(roleSelectionController.roles[index]),
+            ],
+          ),
+        );
+   
+    
   }
 
   SvgPicture svgIcons(int index, bool isDark) {

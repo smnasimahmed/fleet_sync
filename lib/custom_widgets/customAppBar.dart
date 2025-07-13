@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppBar({super.key, required this.title});
+  final void Function()? onTap;
+  const CustomAppBar({super.key, required this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: ConstColours.appDarktBackGround,
       elevation: 0,
-      leading: _customBackButton(),
+      leading: _customBackButton(onTap),
       centerTitle: true,
     );
   }
@@ -30,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-Widget _customBackButton() {
+Widget _customBackButton(onTap) {
   return InkWell(
     child: SizedBox(
       height: 6,
@@ -46,6 +47,6 @@ Widget _customBackButton() {
         ),
       ),
     ),
-    onTap: () => Get.back(),
+    onTap: () => onTap ?? Get.back(),
   );
 }

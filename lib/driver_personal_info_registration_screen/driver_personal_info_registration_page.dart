@@ -40,6 +40,7 @@ class DriverPersonalInfoRegistrationPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _cancleNextButton() {
     return Row(
       children: [

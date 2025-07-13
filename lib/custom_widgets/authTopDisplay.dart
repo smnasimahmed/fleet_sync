@@ -21,6 +21,7 @@ class AuthTopDisplay extends StatelessWidget {
               left: 11.54,
               right: 11.54,
               bottom: 11.54,
+              top: 20
             ),
             child: Text(
               title,

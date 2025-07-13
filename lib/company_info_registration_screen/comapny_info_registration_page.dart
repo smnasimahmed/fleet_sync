@@ -13,7 +13,9 @@ class ComapnyInfoRegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: ConstStrings.registration),
+      appBar: CustomAppBar(
+        title: ConstStrings.registration,
+      ),
       body: _registarionBody(),
     );
   }
