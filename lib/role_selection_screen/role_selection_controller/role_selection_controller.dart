@@ -1,3 +1,4 @@
+import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:get/get.dart';
 // import 'package:get_storage/get_storage.dart';
 
@@ -14,17 +15,29 @@ class RoleSelectionController extends GetxController {
   ];
 
   String get selectedRole => roles[selectedIndex.value];
-//    final role = GetStorage();
 
-//  void updateRoleIndex(int index){   
-//    role.write('role', selectedRole);
-//  }
-
-//   @override
-//   void onInit() {
-//     super.onInit();
-
-//    updateRoleIndex(selectedIndex.value);
-//     // role.write('role', 0);
-//   }
+  void roleWiseFormNavigate(int index) {
+    switch (index) {
+      case 0:
+        Get.toNamed(AppRoutes.driverPersonalInfoReg);
+        break;
+      case 1:
+        Get.toNamed(AppRoutes.comapnyInfoRegistrationPage);
+        break;
+      case 2:
+        Get.toNamed(AppRoutes.mechanicsPersonalInfoRegistrationPage);
+        break;
+      case 3:
+        Get.toNamed(AppRoutes.fuelProviderInfoRegistrationPage);
+        break;
+      case 4:
+        Get.toNamed(AppRoutes.cooksPersonalInfoRegistrationPage);
+        break;
+      default:
+        Get.defaultDialog(
+          title: 'Route Error',
+          middleText: 'Route Not Found. Please Contact to Developer',
+        );
+    }
+  }
 }

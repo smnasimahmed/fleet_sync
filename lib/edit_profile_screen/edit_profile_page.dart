@@ -10,6 +10,7 @@ class EditProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 43.0, left: 20, right: 20),
@@ -19,7 +20,12 @@ class EditProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(children: [DriverPersonalInfoPage(), TruckInfoFormBody()]),
+          child: Column(
+            children: [
+              DriverPersonalInfoPage(),
+              TruckInfoFormBody(),
+            ],
+          ),
         ),
       ),
     );

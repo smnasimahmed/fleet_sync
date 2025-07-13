@@ -75,7 +75,14 @@ class Navbar extends StatelessWidget {
                   await Future.delayed(
                     const Duration(milliseconds: 16),
                   ); // one frame
-                  if (WidgetsBinding.instance.window.viewInsets.bottom > 0.0) {
+                  if (WidgetsBinding
+                          .instance
+                          .platformDispatcher
+                          .views
+                          .first
+                          .viewInsets
+                          .bottom >
+                      0.0) {
                     return true; // keep waiting
                   }
                   scaffoldKey.currentState!.openEndDrawer();

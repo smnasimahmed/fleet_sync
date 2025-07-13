@@ -40,4 +40,9 @@ class AppRoutes {
   static const cardkDetailsPage = '/cardkDetailsPage';
   static const truckSellPostFormPage = '/truckSellPostFormPage';
   static const chatPage = '/chatPage';
+  static const comapnyInfoRegistrationPage = '/comapnyInfoRegistrationPage';
+  static const mechanicsPersonalInfoRegistrationPage = '/mechanicsPersonalInfoRegistrationPage';
+  static const cooksPersonalInfoRegistrationPage = '/cooksPersonalInfoRegistrationPage';
+  static const fuelProviderInfoRegistrationPage = '/fuelProviderInfoRegistrationPage';
 }
+

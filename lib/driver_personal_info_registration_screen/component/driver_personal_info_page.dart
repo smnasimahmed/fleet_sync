@@ -4,16 +4,20 @@ import 'package:fleet_sync/custom_widgets/custom_dropdown_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_formField.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/driver_personal_info_registration_screen/controller/radioController.dart';
+import 'package:fleet_sync/truck_sell_post_form_screen/controller/upload_Image_Controler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
 import 'package:get/get.dart';
 
 class DriverPersonalInfoPage extends StatelessWidget {
-  const DriverPersonalInfoPage({super.key});
+  // final RadioController controller;
+  const DriverPersonalInfoPage({super.key, });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<RadioController>();
+    // final controller =  Get.put(RadioController());
+    final uploadImageControler = Get.find<UploadImageControler>();
     List<DropdownMenuItem<int>> list = [
       DropdownMenuItem(value: 0, child: Text('CDL Types 1')),
       DropdownMenuItem(value: 1, child: Text('CDL Types 2')),
@@ -35,7 +39,12 @@ class DriverPersonalInfoPage extends StatelessWidget {
           Text(ConstStrings.uploadPhoto),
           Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // uploadImageControler.requestStorageAndCameraPermissions();
+                uploadImageControler.requestPhotosPermissionAndPick(
+                  isSingleImage: true,
+                );
+              },
               child: SvgPicture.asset(
                 'assets/icons/uploadImage.svg',
                 height: 95,

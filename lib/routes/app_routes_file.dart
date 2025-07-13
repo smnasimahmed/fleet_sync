@@ -1,15 +1,19 @@
 import 'package:fleet_sync/about_us_screen/about_us_page.dart';
 import 'package:fleet_sync/card_details_screen/card_details_page.dart';
 import 'package:fleet_sync/company_details_screen/company_details_page.dart';
+import 'package:fleet_sync/company_info_registration_screen/comapny_info_registration_page.dart';
+import 'package:fleet_sync/cooks_personal_info_registration_screen/cooks_personal_info_registration_page.dart';
 import 'package:fleet_sync/custom_widgets/logo.dart';
 import 'package:fleet_sync/edit_profile_screen/edit_profile_page.dart';
 import 'package:fleet_sync/faq_screen/faq_page.dart';
 import 'package:fleet_sync/forgot_password/forgot_password_page.dart';
+import 'package:fleet_sync/fuel_provider_info_registration_screen/fuel_provider_info_registration_page.dart';
 import 'package:fleet_sync/home_screen/home_page.dart';
 import 'package:fleet_sync/inbox_screen/component/chat_page.dart';
 import 'package:fleet_sync/language_screen/language_page.dart';
 import 'package:fleet_sync/log_out_popUp/log_out_popUp_page.dart';
 import 'package:fleet_sync/login_screen/login_page.dart';
+import 'package:fleet_sync/mechanics_personal_info_registration_screen/mechanics_personal_info_registration_page.dart';
 import 'package:fleet_sync/navbar/navbar.dart';
 import 'package:fleet_sync/notifications_screen/notifications_page.dart';
 import 'package:fleet_sync/otp_screen/otp_page.dart';
@@ -39,8 +43,6 @@ List<GetPage> appRouteFile = <GetPage>[
     name: AppRoutes.login,
     page: () => LoginPage(),
     transition: Transition.noTransition,
-    // TODO: Add Binding
-    // TODO: Add middleware
   ),
   GetPage(
     name: AppRoutes.signUp,
@@ -117,9 +119,28 @@ List<GetPage> appRouteFile = <GetPage>[
     page: () => TruckSellPostFormPage(),
     binding: NavigationScreenBinding(),
   ),
+  GetPage(name: AppRoutes.chatPage, page: () => ChatPage()),
   GetPage(
-    name: AppRoutes.chatPage,
-    transition: Transition.noTransition,
-    page: () => ChatPage(),
+    name: AppRoutes.comapnyInfoRegistrationPage,
+    page: () => ComapnyInfoRegistrationPage(),
+    binding: NavigationScreenBinding(),
+  ),
+
+  GetPage(
+    name: AppRoutes.mechanicsPersonalInfoRegistrationPage,
+    page: () => MechanicsPersonalInfoRegistrationPage(),
+    binding: NavigationScreenBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.cooksPersonalInfoRegistrationPage,
+    page: () => CooksPersonalInfoRegistrationPage(),
+    binding: NavigationScreenBinding(),
+  ),
+    GetPage(
+    name: AppRoutes.fuelProviderInfoRegistrationPage,
+    page: () => FuelProviderInfoRegistrationPage(),
+    binding: NavigationScreenBinding(),
   ),
 ];
+
+

@@ -4,21 +4,22 @@ import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 Future<void> logOutPopUp(BuildContext context) {
-
   return showDialog(
     context: context,
     barrierDismissible: true,
     builder: (context) {
       return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
         child: Dialog(
           backgroundColor: ConstColours.appDarktBackGround, // dark background
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -54,13 +55,15 @@ Future<void> logOutPopUp(BuildContext context) {
 }
 
 Widget _yesButton(BuildContext context) {
-      final logInSession = GetStorage();
+  // final logInSession = GetStorage();
   return SizedBox(
     height: 30,
     child: ElevatedButton(
       onPressed: () {
-            logInSession.write('role', 0);
-        logInSession.write('logInSession', false);
+        AppStorage().setLoginUserRole(0);
+        AppStorage().setLoginValue(false);
+        // logInSession.write('role', 0);
+        // logInSession.write('logInSession', false);
         Get.toNamed(AppRoutes.login);
       },
       style: ElevatedButton.styleFrom(

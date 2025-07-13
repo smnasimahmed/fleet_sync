@@ -2,11 +2,11 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/role_selection_screen/role_selection_controller/role_selection_controller.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:fleet_sync/const/const_colours.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RoleSelectionPage extends StatelessWidget {
@@ -25,7 +25,8 @@ class RoleSelectionPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: customElevatedButton(
             title: ConstStrings.continu,
-            onPressed: () => Get.toNamed(AppRoutes.driverPersonalInfoReg),
+            onPressed: ()=> roleSelectionController.roleWiseFormNavigate(AppStorage().getLoginUserRole()),
+            // () => Get.toNamed(AppRoutes.driverPersonalInfoReg),
           ),
         ),
       ),
@@ -64,8 +65,7 @@ class RoleSelectionPage extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         roleSelectionController.selectedIndex.value = index;
-        final role = GetStorage();
-        role.write('role', index);
+        AppStorage().setLoginUserRole(index);
       },
 
       style: ElevatedButton.styleFrom(

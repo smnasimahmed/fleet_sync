@@ -190,8 +190,8 @@ class InboxPage extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 7.2,
-          child: Customtext(title: '2', textSize: 10),
           backgroundColor: ConstColours.red,
+          child: Customtext(title: '2', textSize: 10),
         ),
         Customtext(
           title: '01:42',

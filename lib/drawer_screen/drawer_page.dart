@@ -97,7 +97,6 @@ class DrawerPage extends StatelessWidget {
       child: InkWell(
         onTap: () {
           logOutPopUp(context);
-          // Get.toNamed(pages[10]);
         },
         child: Row(
           children: [
@@ -147,9 +146,13 @@ class DrawerPage extends StatelessWidget {
   }
 }
 
+RxBool lightThemeValue = true.obs;
+RxBool profileVisibilityValue = true.obs;
+
 Widget _buildAction(int index, List<String> pages) {
   bool flag = index == 0 || index == 1;
-  RxBool value = true.obs;
+
+  // RxBool value = true.obs;
 
   return SizedBox(
     width: 50,
@@ -161,17 +164,32 @@ Widget _buildAction(int index, List<String> pages) {
               ? Obx(
                 () => Transform.scale(
                   scale: .6,
-                  child: Switch(
-                    value: value.value,
-                    onChanged: (bool newValue) {
-                      // handle switch change
-                      value.value = newValue;
-                    },
-                  ),
+                  child: _phoneNumberSwitch(index),
                 ),
               )
               : SvgPicture.asset('assets/icons/next.svg'),
-      // ),
     ),
   );
+}
+
+Switch _phoneNumberSwitch(int index) {
+  return Switch(
+                  value:
+                      (index == 0)
+                          ? lightThemeValue.value
+                          : profileVisibilityValue.value,
+                  onChanged: (index == 0) ? theme : profileVisibility,
+                );
+}
+
+theme(bool newValue) {
+  // handle switch change
+  lightThemeValue.value = newValue;
+  print('lightThemeValue ${lightThemeValue.value}');
+}
+
+profileVisibility(bool newValue) {
+  // handle switch change
+  profileVisibilityValue.value = newValue;
+  print('profileVisibilityValue ${profileVisibilityValue.value}');
 }

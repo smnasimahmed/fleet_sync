@@ -3,6 +3,7 @@ import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/role_selection_screen/role_selection_controller/role_selection_controller.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -43,7 +44,7 @@ class WelcomePage extends StatelessWidget {
 
             Customtext(
               title:
-                  '${ConstStrings.your}${controller.roles[role.read('role') ?? 0]}${ConstStrings.profileIsNowActive}',
+                  '${ConstStrings.your}${controller.roles[AppStorage().getLoginUserRole()]}${ConstStrings.profileIsNowActive}',
               textSize: 18,
               fontWeight: FontWeight.w600,
               textColor: TextColor.colorGreen,

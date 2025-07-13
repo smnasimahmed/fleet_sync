@@ -10,7 +10,6 @@ class CustomTextFormField extends StatelessWidget {
   final int maxLine;
   final int? minLines;
 
-
   const CustomTextFormField({
     super.key,
     required this.title,
@@ -64,6 +63,15 @@ class CustomTextFormField extends StatelessWidget {
                           )
                           : null,
                   prefixIcon: isSearch.value ? searchIcon() : null,
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  errorStyle: TextStyle(color: Colors.red),
                 ),
               );
             }),

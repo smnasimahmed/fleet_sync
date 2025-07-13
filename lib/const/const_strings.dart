@@ -198,10 +198,41 @@ class ConstStrings {
 
   static const success = 'Success';
   static const cancelled = 'Cancelled';
-  static const imageSelected  = 'Image Selected: ';
-  static const noImageSelected  = 'No image selected.';
-  static const error  = 'Error';
-  static const failedToPickImage  = 'Failed to pick image';
+  static const imageSelected = 'Image Selected: ';
+  static const noImageSelected = 'No image selected.';
+  static const error = 'Error';
+  static const failedToPickImage = 'Failed to pick image';
+
+  static const shopName = 'Shop Name';
+  static const typesOfRepairs = 'Types Of Repairs';
+  static const doYouHavePhysicalRepairShop =
+      'Do you have a physical repair shop?';
+  static const doYouOfferMobileAssistance = 'Do you offer mobile assistance?';
+  static const city = 'City';
+  static const state = 'State';
+  static const website = 'Website';
+  static const uploadYourCertificate = 'Upload Your Certificate';
+  static const upload = 'upload';
+
+  static const foodServiceName = 'Food Service name';
+  static const typesOfCuisines = 'Types Of Cuisines';
+  static const doYouSellFoodFromFixedLocation =
+      'Do you sell food from a fixed location?';
+  static const doYouOfferMobileDeliveryOrRoadsideService =
+      'Do you offer mobile delivery or roadside service?';
+  static const addressIfAny = 'Address(if any)';
+
+  static const fuelCardName = 'Fuel Card Name';
+  static const fuelCompanyName = 'Fuel Company Name';
+  static const supportedTruckStops = 'Supported Truck Stops';
+  static const averageWeeklyDiscount = 'Average Weekly Discount';
+  static const creditLineAvailability = 'Credit Line Availability';
+
+  static const companyName = 'Company Name';
+  static const dotNumber = 'DOT Number';
+  static const mcNumber = 'MC Number';
+  static const transportationType = 'Transportation type';
+
   static const aboutUsDescription =
       '''FleetSync is a comprehensive mobile platform dedicated to revolutionizing the U.S. trucking and logistics industry. Our mission is to unify the entire ecosystem—professional drivers, truck owners, logistics companies, mechanics, cooks, and fuel providers—into one seamless, easy-to-use app.
 

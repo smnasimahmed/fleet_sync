@@ -53,7 +53,7 @@ final UploadImageControler controller = Get.find<UploadImageControler>();
                 Center(
                   child: GestureDetector(
                     onTap: ()async{
-                      await controller.requestStorageAndCameraPermissions();
+                      // await controller.requestStorageAndCameraPermissions();
                       await controller.requestPhotosPermissionAndPick(isSingleImage: true);
                     } ,
                     child: Column(

@@ -15,7 +15,7 @@ class UploadImageControler extends GetxController {
 
     if (status.isGranted) {
       // Permission granted, proceed to pick image
-      (isSingleImage == true) ? await pickImage() : pickMultiImage();
+      (isSingleImage == true) ? await _pickImage() : _pickMultiImage();
     } else if (status.isDenied) {
       // Show a polite dialog explaining why permission is needed
       Get.snackbar(
@@ -38,7 +38,7 @@ class UploadImageControler extends GetxController {
     }
   }
 
-  Future<void> pickImage() async {
+  Future<void> _pickImage() async {
     try {
       final XFile? file = await picker.pickImage(source: ImageSource.gallery);
       if (file != null) {
@@ -58,7 +58,7 @@ class UploadImageControler extends GetxController {
     }
   }
 
-  Future<void> pickMultiImage() async {
+  Future<void> _pickMultiImage() async {
     try {
       final List<XFile> files = await picker.pickMultiImage();
       if (files.isNotEmpty) {
@@ -78,18 +78,18 @@ class UploadImageControler extends GetxController {
     }
   }
 
-  Future<void> requestStorageAndCameraPermissions() async {
-    if (await Permission.photos.isDenied ||
-        await Permission.photos.isPermanentlyDenied) {
-      await Permission.photos.request();
-    }
-    if (await Permission.storage.isDenied ||
-        await Permission.storage.isPermanentlyDenied) {
-      await Permission.storage.request();
-    }
-    if (await Permission.camera.isDenied ||
-        await Permission.camera.isPermanentlyDenied) {
-      await Permission.camera.request();
-    }
-  }
+  // Future<void> requestStorageAndCameraPermissions() async {
+  //   if (await Permission.photos.isDenied ||
+  //       await Permission.photos.isPermanentlyDenied) {
+  //     await Permission.photos.request();
+  //   }
+  //   if (await Permission.storage.isDenied ||
+  //       await Permission.storage.isPermanentlyDenied) {
+  //     await Permission.storage.request();
+  //   }
+  //   if (await Permission.camera.isDenied ||
+  //       await Permission.camera.isPermanentlyDenied) {
+  //     await Permission.camera.request();
+  //   }
+  // }
 }
