@@ -26,10 +26,10 @@ class MainApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         defaultTransition: Transition.noTransition,
         // home: DriverPersonalInfoRegistrationPage(),
-        initialRoute: //AppRoutes.navbar,
-            (AppStorage().getLoginValue() == true)
-                ? AppRoutes.navbar
-                : AppRoutes.login,
+        initialRoute: AppRoutes.navbar,
+            // (AppStorage().getLoginValue() == true)
+            //     ? AppRoutes.navbar
+            //     : AppRoutes.login,
         // initialBinding: RootBindings(),
         getPages: appRouteFile,
         debugShowCheckedModeBanner: false,
