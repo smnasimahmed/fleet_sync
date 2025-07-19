@@ -5,6 +5,7 @@ import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/rememberMe.dart';
 import 'package:fleet_sync/driver_personal_info_registration_screen/controller/radioController.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -61,7 +62,10 @@ class CooksPersonalInfoRegistrationPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 9),
             child: customElevatedButton(
               title: ConstStrings.next,
-              onPressed: () => Get.offAllNamed(AppRoutes.packageBuying),
+              onPressed: () {
+                AppStorage().setLoginValue(RouteInitial.packageBuying);
+                Get.offAllNamed(AppRoutes.packageBuying);
+              },
             ),
           ),
         ),

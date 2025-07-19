@@ -42,8 +42,10 @@ class LoginPage extends StatelessWidget {
           customElevatedButton(
             title: ConstStrings.signIn,
             onPressed: () {
-              Get.offAllNamed(AppRoutes.roleSelection);
+              AppStorage().box.erase();
               AppStorage().setLoginUserRole(0);
+              AppStorage().setLoginValue(RouteInitial.role);
+              Get.offAllNamed(AppRoutes.roleSelection);
             },
           ),
           SizedBox(height: 162),

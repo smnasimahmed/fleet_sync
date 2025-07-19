@@ -5,6 +5,7 @@ import 'package:fleet_sync/custom_widgets/rememberMe.dart';
 import 'package:fleet_sync/driver_personal_info_registration_screen/component/driver_personal_info_page.dart';
 import 'package:fleet_sync/driver_personal_info_registration_screen/controller/radioController.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -64,6 +65,9 @@ class DriverPersonalInfoRegistrationPage extends StatelessWidget {
               onPressed: () {
                 if (controller.selectedTrailerOption.value == OwnATrailer.yes) {
                   Get.toNamed(AppRoutes.truckInformation);
+                } else {
+                  AppStorage().setLoginValue(RouteInitial.packageBuying);
+                  Get.offAllNamed(AppRoutes.packageBuying);
                 }
                 print('Wellcome');
               },

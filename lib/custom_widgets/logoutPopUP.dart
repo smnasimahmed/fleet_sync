@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:fleet_sync/const/const_colours.dart';
 import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
@@ -55,15 +54,12 @@ Future<void> logOutPopUp(BuildContext context) {
 }
 
 Widget _yesButton(BuildContext context) {
-  // final logInSession = GetStorage();
   return SizedBox(
     height: 30,
     child: ElevatedButton(
       onPressed: () {
         AppStorage().setLoginUserRole(0);
-        AppStorage().setLoginValue(false);
-        // logInSession.write('role', 0);
-        // logInSession.write('logInSession', false);
+        AppStorage().setLoginValue(RouteInitial.login);
         Get.toNamed(AppRoutes.login);
       },
       style: ElevatedButton.styleFrom(

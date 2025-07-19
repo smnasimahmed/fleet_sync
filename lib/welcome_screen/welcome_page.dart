@@ -5,7 +5,6 @@ import 'package:fleet_sync/role_selection_screen/role_selection_controller/role_
 import 'package:fleet_sync/routes/app_routes.dart';
 import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -23,7 +22,7 @@ class WelcomePage extends StatelessWidget {
           title: ConstStrings.letsGetStarted,
           onPressed: () {
             logInSession.write('logInSession', true);
-            Get.toNamed(AppRoutes.navbar);
+            Get.offAllNamed(AppRoutes.navbar);
           },
         ),
       ),
@@ -32,11 +31,13 @@ class WelcomePage extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('I am not getting Icons here. Need to fix later on...!!!!'),
-            SvgPicture.asset('assets/icons/fleet.svg', height: 100, width: 100),
+            // Text('I am not getting Icons here. Need to fix later on...!!!!'),
+            // SvgPicture.asset('assets/icons/fleet.svg', height: 100, width: 100),
+            Image.asset('assets/icons/fleet.png',height: 100,width: 100,),
             Customtext(
               title:
                   '${ConstStrings.welcomeTo}\n${ConstStrings.fleetSyncCommunity}',
+                  top: 15,
               textSize: 28,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,

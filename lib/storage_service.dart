@@ -28,16 +28,22 @@ class AppStorage {
   //   await box.write(StorageKey.refreshToken, value);
   // }
 
-  Future<void> setLoginValue(bool value) async {
-    await box.write(StorageKey.loginValue, value);
+  Future<void> setLoginValue(RouteInitial value) async {
+    await box.write(StorageKey.loginValue, value.name);
   }
 
   Future<void> setLoginUserRole(int value) async {
     await box.write(StorageKey.setLoginUserRole, value);
   }
 
-  bool getLoginValue() {
-    return box.read(StorageKey.loginValue) ?? false;
+  RouteInitial getLoginValue() {
+    String? stored = box.read(StorageKey.loginValue);
+    var something = RouteInitial.values.firstWhere(
+      (e) => e.name == stored,
+      orElse: () => RouteInitial.login,
+    );
+    return something;
+    // return box.read(StorageKey.loginValue) ?? RouteInitial.login.name;
   }
 
   int getLoginUserRole() {
@@ -72,3 +78,5 @@ class AppStorage {
   //   await box.erase();
   // }
 }
+
+enum RouteInitial { login, navbar, role, packageBuying, welcomePage }

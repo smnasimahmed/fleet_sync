@@ -5,6 +5,7 @@ import 'package:fleet_sync/const/const_strings.dart';
 import 'package:fleet_sync/custom_widgets/custom_elevated_button.dart';
 import 'package:fleet_sync/custom_widgets/custom_text.dart';
 import 'package:fleet_sync/routes/app_routes.dart';
+import 'package:fleet_sync/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -82,7 +83,7 @@ class PackageBuyingPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: FilledButton(
-                  onPressed:  () => Get.toNamed(AppRoutes.paymentPage), 
+                  onPressed: () => Get.toNamed(AppRoutes.paymentPage),
 
                   child: Customtext(
                     title: ConstStrings.buyNow,
@@ -110,7 +111,10 @@ Widget _trialCancleButton() {
             customElevatedButton(
               title: ConstStrings.start3DaysFreeTrial,
               color: ConstColours.colorGreen,
-              onPressed: () => Get.toNamed(AppRoutes.welcomePage), //paymentPage
+              onPressed: () {
+                AppStorage().setLoginValue(RouteInitial.packageBuying);
+                Get.offAllNamed(AppRoutes.welcomePage);
+              },
             ),
             customElevatedButton(
               title: ConstStrings.cancel,

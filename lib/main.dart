@@ -26,14 +26,29 @@ class MainApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         defaultTransition: Transition.noTransition,
         // home: DriverPersonalInfoRegistrationPage(),
-        initialRoute: AppRoutes.navbar,
-            // (AppStorage().getLoginValue() == true)
-            //     ? AppRoutes.navbar
-            //     : AppRoutes.login,
+        initialRoute: initialRoute(), //AppRoutes.navbar,
+        // (AppStorage().getLoginValue() == true)
+        //     ? AppRoutes.navbar
+        //     : AppRoutes.login,
         // initialBinding: RootBindings(),
         getPages: appRouteFile,
         debugShowCheckedModeBanner: false,
       ),
     );
+  }
+}
+
+String initialRoute() {
+  switch (AppStorage().getLoginValue()) {
+    case RouteInitial.login:
+      return AppRoutes.login;
+    case RouteInitial.navbar:
+      return AppRoutes.navbar;
+    case RouteInitial.role:
+      return AppRoutes.roleSelection;
+    case RouteInitial.packageBuying:
+      return AppRoutes.packageBuying;
+    case RouteInitial.welcomePage:
+      return AppRoutes.welcomePage;
   }
 }
